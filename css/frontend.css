@@ -7,7 +7,6 @@ Frontend Css
 Xmas Classic
 */
 .xmas-classic .wpcf7 {
-	border: 1px solid #000;
 	position: relative;
 }
 .xmas-classic .wpcf7 form {
@@ -36,7 +35,7 @@ Xmas Classic
 	width: 350px;
 	margin-left: 145px;
 }
-.xmas-classic span{
+.xmas-classic .wpcf7 span{
 	display: block;
 }
 .xmas-classic .footer {

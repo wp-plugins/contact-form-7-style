@@ -416,32 +416,6 @@ function cf7_style_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'cf7_style_scripts_styles' );
 
-
-/**
- * Declare selected Google Font for admin area
- */
-function cf7_style_admin_font() {
-	$cf7_style_font_label  = get_option( 'cf7_style_google_fonts' );
-	$cf7_style_font_input  = get_option( 'cf7_style_google_fonts_for_input_text' );
-
-	// Google Fonts Array for label and input
-	$google_font_label =  explode( ':', $cf7_style_font_label );
-	$google_font_input =  explode( ':', $cf7_style_font_input );
-	?>
-		<style type="text/css">
-			.cf7_style_opts .font-viewer,
-			.cf7_style_opts .font-viewer3 {
-				font-family: "<?php echo $google_font_label[0]; ?>";
-			}
-			.cf7_style_opts .font-viewer2 {
-				font-family: "<?php echo $google_font_input[0]; ?>";
-			}
-		</style>
-	<?php
-}
-add_action( 'admin_init', 'cf7_style_admin_font' );
-
-
 /**
  * Declare input font-family for frontend
  */
