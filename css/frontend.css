@@ -271,7 +271,7 @@ Xmas Simple
 	height: 17px;
 	margin: 0 auto;
 	padding: 20px 20px 0 20px;
-	background: url( '../images/xmas-simple/header.png' ) no-repeat 23px 10px;	
+	background: url( '../images/xmas-simple/header.png' ) no-repeat -4px 10px;	
 	border: dashed 2px #542c0e;
 	border-bottom: none;
 }
@@ -279,7 +279,7 @@ Xmas Simple
 .xmas-simple .wpcf7 .footer {
 	border-top: none;
 	border-bottom: dashed 2px #542c0e;
-	background: url( '../images/xmas-simple/footer.png' ) no-repeat 22px 0;
+	background: url( '../images/xmas-simple/footer.png' ) no-repeat 0 0;
 	padding-bottom: 10px;
 }
 
@@ -324,7 +324,7 @@ Xmas Simple
 	height: 30px;
 	line-height: 30px;
 	padding-left: 9px;
-	width: 250px;
+	width: 245px;
 	color: #ee0000;
 	background: #fff;
 	border: none;

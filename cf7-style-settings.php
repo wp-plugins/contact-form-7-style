@@ -368,7 +368,10 @@ add_action('admin_init', 'cf7_style_add_init');
  */
 function cf7_style_fonts() { 
 	$cf7_style_google_font = get_option( 'cf7_style_google_fonts' );
-	 
+	if( empty( $cf7_style_google_font ) || $cf7_style_google_font == 'Default' ) {
+		$cf7_style_google_font = "Bitter";
+	}
+	
 	$query_args = array(
 		'family' => urlencode( $cf7_style_google_font ),
 		'subset' => urlencode( 'latin,latin-ext' ),
@@ -383,14 +386,18 @@ function cf7_style_fonts() {
  */
 function cf7_style_fonts_for_inputs() { 
 	$cf7_style_google_font = get_option( 'cf7_style_google_fonts_for_input_text' );
-	 
+	if( empty( $cf7_style_google_font ) || $cf7_style_google_font == 'Default') {
+		$cf7_style_google_font = "Open Sans";
+	}
+	
 	$query_args = array(
 		'family' => urlencode( $cf7_style_google_font ),
 		'subset' => urlencode( 'latin,latin-ext' ),
 	);
 	$google_font_url = add_query_arg( $query_args, "//fonts.googleapis.com/css" ); 
-	
+
 	return $google_font_url; 
+	
 }
 
 
@@ -416,22 +423,40 @@ function cf7_style_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'cf7_style_scripts_styles' );
 
+
 /**
- * Declare input font-family for frontend
+ * Declare selected Google Font for admin area
  */
-function cf7_style_fe_input_font() {
-	$cf7_style_google_font = get_option( 'cf7_style_google_fonts_for_input_text' );
-	$google_font_family    =  explode( ':', $cf7_style_google_font );
+function cf7_style_admin_font() {
+?>
+<style type="text/css">
+<?php
+	$cf7_style_font_label  = get_option( 'cf7_style_google_fonts' );
+	$cf7_style_font_input  = get_option( 'cf7_style_google_fonts_for_input_text' );
+
+	// Google Fonts Array for label and input
+	$google_font_label =  explode( ':', $cf7_style_font_label );
+	$google_font_input =  explode( ':', $cf7_style_font_input );
+	if( !empty( $google_font_label[0] ) && $google_font_label[0] != 'Default' ) {
 	?>
-		<style type="text/css">
-			.wpcf7 input,
-			.wpcf7 textarea{
-				font-family: "<?php echo $google_font_family[0]; ?>";
+			.cf7_style_opts .font-viewer,
+			.cf7_style_opts .font-viewer3 {
+				font-family: "<?php echo $google_font_label[0]; ?>";
 			}
-		</style>
 	<?php
+	}
+	if( !empty( $google_font_input[0] ) && $google_font_input[0] != 'Default' ) {
+	?>
+			.cf7_style_opts .font-viewer2 {
+				font-family: "<?php echo $google_font_input[0]; ?>";
+			}
+	<?php
+	}
+?>
+</style>
+<?php
 }
-add_action( 'wp_head', 'cf7_style_fe_input_font' );
+add_action( 'admin_head', 'cf7_style_admin_font' );
 
 
 /**
@@ -457,92 +482,120 @@ add_filter( 'body_class', 'cf7_style_body_class' );
 
 
 /**
- * Change the form background color
+ * Output css style for frontend
  */
-function cf7_style_form_background( $formbgclass ) {
+function cf7_style_frontend_output() {
+?>
+<style type="text/css">
+<?php
+	/**
+	 * Declare input font-family for frontend
+	 */
+	$cf7_style_google_font = get_option( 'cf7_style_google_fonts' );
+	$google_font_family    =  explode( ':', $cf7_style_google_font );
+	if( !empty( $google_font_family[0] ) && $google_font_family[0] != 'Default' ) {
+	?>
+		.wpcf7 input,
+		.wpcf7 textarea,
+		.wpcf7 form {
+			font-family: "<?php echo $google_font_family[0]; ?>";
+		}
+	<?php
+	}
+	
+	$cf7_style_font_label  = get_option( 'cf7_style_google_fonts' );
+	$cf7_style_font_input  = get_option( 'cf7_style_google_fonts_for_input_text' );
+
+	// Google Fonts Array for label and input
+	$google_font_label =  explode( ':', $cf7_style_font_label );
+	$google_font_input =  explode( ':', $cf7_style_font_input );
+	if( !empty( $google_font_label[0] ) && $google_font_label[0] != 'Default' && !empty( $google_font_input[0] ) && $google_font_input[0] != 'Default' ) {
+	?>
+		.wpcf7,
+		.wpcf7 form,
+		.wpcf7 form {
+			font-family: "<?php echo $google_font_label[0]; ?>";
+		}
+		.wpcf7 input,
+		.wpcf7 textarea	{
+			font-family: "<?php echo $google_font_input[0]; ?>";
+		}
+	<?php
+	}	
+	
+	
+	/**
+	 * Change the form background color
+	 */
 	$cf7_style_form_background = get_option( 'cf7_style_form_bg' );
 	$cf7_style_form_background =  explode( ':', $cf7_style_form_background );
+	if( !empty( $cf7_style_form_background[0] ) ) {
 	?>
-		<style type="text/css">
-            .wpcf7 {
-                background-color: <?php echo $cf7_style_form_background[0]; ?>;	
-            }
-        </style>
-    <?php
-}
-add_action ( 'wp_head', 'cf7_style_form_background' );
-
-
-/**
- * Change the background color for input and textarea
- */
-function cf7_style_input_background( $formbgclass ) {
+		.wpcf7 {
+			background-color: <?php echo $cf7_style_form_background[0]; ?>;	
+		}
+    <?php	
+	}
+	
+	/**
+	 * Change the background color for input and textarea
+	 */
 	$cf7_style_input_background = get_option( 'cf7_style_input_bg' );
 	$cf7_style_input_background =  explode( ':', $cf7_style_input_background );
+	if( !empty( $cf7_style_input_background[0] ) ) {
 	?>
-		<style type="text/css">
-            .wpcf7 input,
-			.wpcf7 textarea{
-                background-color: <?php echo $cf7_style_input_background[0]; ?>;	
-            }
-        </style>
-    <?php
-}
-add_action ( 'wp_head', 'cf7_style_input_background' );
-
-
-/**
- * Change the label color 
- */
-function cf7_style_label_color( $formbgclass ) {
+		.wpcf7 input,
+		.wpcf7 textarea{
+			background-color: <?php echo $cf7_style_input_background[0]; ?>;	
+		}
+	<?php
+	}
+	
+	/**
+	 * Change the label color 
+	 */
 	$cf7_style_label_color = get_option( 'cf7_style_label_color' );	
 	$cf7_style_label_color = explode( ':', $cf7_style_label_color );
+	if( !empty( $cf7_style_label_color[0] ) ) {
 	?>
-		<style type="text/css">
-            .wpcf7 .wpcf7-form p{
-                color: <?php echo $cf7_style_label_color[0]; ?>;	
-            }
-        </style>
+		.wpcf7 .wpcf7-form p{
+			color: <?php echo $cf7_style_label_color[0]; ?>;	
+		}
     <?php
-}       
-add_action ( 'wp_head', 'cf7_style_label_color' );
-
-
-/**
- * Change the text color for input and textarea
- */
-function cf7_style_input_text_color( $formbgclass ) {
+	}
+	
+	/**
+	 * Change the text color for input and textarea
+	 */
 	$cf7_style_input_text_color = get_option( 'cf7_style_input_text_color' );
 	$cf7_style_input_text_color = explode( ':', $cf7_style_input_text_color );
+	if( !empty( $cf7_style_input_text_color[0] ) ) {
 	?>
-		<style type="text/css">
-            .wpcf7 .wpcf7-form input,
-			.wpcf7 .wpcf7-form textarea{
-                color: <?php echo $cf7_style_input_text_color[0]; ?>;	
-            }
-		</style>
+		.wpcf7 .wpcf7-form input,
+		.wpcf7 .wpcf7-form textarea{
+			color: <?php echo $cf7_style_input_text_color[0]; ?>;	
+		}
 	<?php
-}  
-add_action ( 'wp_head', 'cf7_style_input_text_color' );       
-
-
-/**
- * Change the border color for input and textarea
- */
-function cf7_style_input_border_color( $formbgclass ) {
+	}
+	
+	/**
+	 * Change the border color for input and textarea
+	 */
 	$cf7_style_input_border_color = get_option( 'cf7_style_input_border_color' );
 	$cf7_style_input_border_color = explode( ':', $cf7_style_input_border_color );
+	if( !empty( $cf7_style_input_border_color[0] ) ) {
 	?>
-		<style type="text/css">
-            .wpcf7 .wpcf7-form input,
-			.wpcf7 .wpcf7-form textarea {
-                border: 1px solid <?php echo $cf7_style_input_border_color[0]; ?>;	
-            }
-        </style>
+		.wpcf7 .wpcf7-form input,
+		.wpcf7 .wpcf7-form textarea {
+			border: 1px solid <?php echo $cf7_style_input_border_color[0]; ?>;	
+		}
 	<?php	
+	}	
+?>
+</style>
+<?php
 }
-add_action ( 'wp_head', 'cf7_style_input_border_color' );
-
+add_action( 'wp_head', 'cf7_style_frontend_output' );
 
 /**
  * Change the menu label to Contact Style
