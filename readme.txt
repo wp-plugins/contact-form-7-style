@@ -2,8 +2,8 @@
 Contributors: dorumarginean, ionut.iclanzan, mircear, mlehelsz
 Tags: contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling 
 Requires at least: 3.0.1
-Tested up to: 3.7
-Stable tag: 4.3
+Tested up to: 3.8.1
+Stable tag: 4.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,3 +38,6 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 = 1.0 =
 * First plugin version.
+
+= 1.0.1 =
+* Fixed x-mas classic display on 2014 wordpress theme.
