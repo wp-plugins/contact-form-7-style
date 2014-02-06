@@ -10,38 +10,41 @@ Xmas Classic
 	position: relative;
 }
 .xmas-classic .wpcf7 form {
-	overflow:hidden;
-	display: block;
-	width: 100%;
-	margin: auto;
-	text-align: center;
-	background: url("../images/xmas-classic/bg-repeat.png") 118px 10px repeat-y;
+    background: url("../images/xmas-classic/bg-repeat.png") repeat-y scroll 1px 1px rgba(0, 0, 0, 0);
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
 }
 .xmas-classic .header {
-	background: url("../images/xmas-classic/top_border.png") 0 0 no-repeat;
-	width: 100%;
-	height: 30px;
+    background: url("../images/xmas-classic/top_border.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 23px;
+    width: 100%;
 }
 .xmas-classic .left {
-	background: url("../images/xmas-classic/left_part_bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-	bottom: 255px;
-	height: 129px;
-	position: absolute;
-	width: 145px;
+    background: url("../images/xmas-classic/left_part_bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 255px;
+    height: 129px;
+    left: -73px;
+    position: absolute;
+    width: 99px;
 }
 .xmas-classic .wpcf7 p {
-	margin-bottom: 20px;
-	color: #482c09;
-	width: 350px;
-	margin-left: 145px;
+    color: #482C09;
+    margin-bottom: 20px;
+    margin-left: 27px;
+    width: 350px;
 }
-.xmas-classic .wpcf7 span{
-	display: block;
+.xmas-classic .wpcf7 span {
+    display: block;
 }
 .xmas-classic .footer {
-	background: url("../images/xmas-classic/bottombg.png") 0 0 no-repeat;
-	width: 100%;
-	height: 255px;
+    background: url("../images/xmas-classic/bottombg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 0;
+    height: 255px;
+    margin-left: -70px;
+    width: 100%;
 }
 .xmas-classic .wpcf7 form input, 
 .xmas-classic .wpcf7 form textarea {
@@ -74,7 +77,7 @@ Xmas Classic
 	border: medium none;
 	bottom: 20px;
 	height: 54px;
-	left: 146px;
+	left: 30px;
 	position: absolute;
 	text-indent: -9999px;
 	width: 78px;
@@ -140,8 +143,8 @@ Xmas Red
 	text-indent: -9999px;
 	border: none;
 	-webkit-box-shadow: none;
-	   -moz-box-shadow: none;
-	        box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
 
 .xmas-red .wpcf7-validation-errors,
@@ -149,10 +152,11 @@ Xmas Red
 .xmas-classic .wpcf7-validation-errors,
 .xmas-classic .wpcf7-mail-sent-ok{
 	border: none;
-	margin: 0 auto;
-	width: 380px;	
+	width: 350px;	
 	font-size: 22px;
 	color: #FC8181;
+	margin-left: 25px;
+	padding: 0;
 }
 
 .xmas-red .wpcf7-mail-sent-ok,

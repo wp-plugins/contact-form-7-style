@@ -59,7 +59,7 @@ function cf7_style_add_admin() {
 		basename(__FILE__),
 		'cf7_style_menu',
 		'',
-		28.5
+		28.666
 	);
 
 	add_submenu_page(
