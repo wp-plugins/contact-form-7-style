@@ -19,5 +19,16 @@ jQuery(document).ready( function( $ ) {
 	$('.cf7_style_templates li').removeClass( 'selected' ).eq( xmasIndex ).addClass( 'selected' );
 	
 	$('.cf7_style_admin .cf7_style_select').first().hide();
+	
+	//controlling the custom style panels
+	$('.generalssetpanel').click(function() {
+		$('.generals').slideToggle();
+	});
+	$('.inputsandlabelspanel').click(function() {
+		$('.labelsandinputsset').slideToggle();
+	});
+	$('.submitbuttonsetpanel').click(function() {
+		$('.submitbuttonset').slideToggle();
+	});
 });
 

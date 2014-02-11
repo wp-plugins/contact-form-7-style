@@ -1,6 +1,6 @@
 === Contact Form 7 Style ===
 Contributors: dorumarginean, ionut.iclanzan, mircear, mlehelsz
-Tags: contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling 
+Tags: contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling 
 Requires at least: 3.0.1
 Tested up to: 3.8.1
 Stable tag: 4.3.1
@@ -18,7 +18,10 @@ Supports 3 Christmas templates for now. These templates can be customized:
 - background-color,
 - border-color,
 - fields, text and background color
-- form styling 
+- form styling
+- valentine's day styling
+- christmas styling
+- custom form styling 
 
 
 == Installation ==
@@ -33,6 +36,7 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 1. screenshot-1.jpg
 2. screenshot-2.jpg
+3. screenshot-3.jpg
 
 == Changelog ==
 
@@ -41,3 +45,8 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 = 1.0.1 =
 * Fixed x-mas classic display on 2014 wordpress theme.
+
+= 1.1.0 =
+* Added Valentine's Day templates for 2014.
+* Fixed Xmas Red header and footer position
+* Added Custom Style submenu for styling the templates 

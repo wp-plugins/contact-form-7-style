@@ -85,6 +85,7 @@ Admin styles
     padding: 30px 10px;  
     border-bottom: 1px solid #ddd;  
     border-top: 1px solid #fff;  
+	clear:both;
 } 
  
 .cf7_style_opts small{  
@@ -328,4 +329,30 @@ small.preview {
   font-style: normal;
   font-weight: 400;
   src: local('Pirata One'), local('PirataOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/pirataone/v1/AFeg8ejJtTM5d0wUfgcmXhsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+
+.panel {
+	width:100%;
+	cursor:pointer;
+	border-bottom: 1px solid #DDD;
+	background: none repeat scroll 0% 0% #F2F2F2;
+	padding: 0px;
+	font-size: 1em;
+	text-transform: uppercase;
+	margin: 0px;
+	font-weight: bold;
+	color: #232323;
+	float: left;
+	padding: 14px 4px 14px 10px;
+}
+
+.submitbuttonset,
+.generalssetpanel  {
+	clear:both;
+}
+
+.generals,
+.labelsandinputsset,
+.submitbuttonset {
+	display:none;
 }
