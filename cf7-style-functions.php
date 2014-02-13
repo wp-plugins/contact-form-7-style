@@ -564,7 +564,27 @@ function cf7_style_body_class( $classes ) {
 add_filter( 'body_class', 'cf7_style_body_class' );
 
 
-
-
-
-
+/**
+ * Check for updates
+ *
+ * Display an update notice in the news box
+ */
+function cf7_style_update() {
+	$svn_readme    = file_get_contents("http://plugins.svn.wordpress.org/contact-form-7-style/trunk/readme.txt");
+	$svn_pos       = strrpos( $svn_readme, '=' );
+	$svn_version   = substr( $svn_readme, $svn_pos-6, 5 );	
+	
+	$local_readme  = file_get_contents( plugins_url() . "/contact-form-7-style/readme.txt");
+	$local_pos     = strrpos( $local_readme, '=' );
+	$local_version = substr( $local_readme, $local_pos-6, 5 );	
+	
+	$local_version = str_replace( '.', '', $local_version );
+	$svn_version   = str_replace( '.', '', $svn_version );
+	
+	if( $local_version !== $svn_version ) {
+		$html = "<div class='update-message'>There is a new version of ";
+		$html .= "<a href='http://wordpress.org/plugins/contact-form-7-style/'>Contact Form 7 Style.</a> "; 
+		$html .= "Please <a href='" . get_bloginfo('url') . "/wp-admin/plugins.php?plugin_status=upgrade'>update now</a>.</div>";
+		echo $html;
+	}
+}

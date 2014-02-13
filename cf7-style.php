@@ -3,7 +3,7 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Contact form 7 Style 
-Version: 1.1.0
+Version: 1.1.1
 Author: REEA
 Author URI: http://www.reea.net/
 License: GPL2

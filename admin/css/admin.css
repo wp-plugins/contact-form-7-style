@@ -2,6 +2,20 @@
 Contact Form 7 - Xmas 
 Admin styles
 */
+.cf7_style_section .cf7_style_options h4 {
+	margin: 20px 20px 10px 20px;
+}	
+.cf7_style_section .update-message {
+	margin: 20px 20px 0 20px; 
+	padding: 10px 20px; 
+	background-color: #FCF3EF; 
+	color: #E14D43; 
+	border-left: 4px solid #D54E21;
+}
+.cf7_style_section .update-message a {
+	text-decoration: none;
+}
+
 
 .cf7_style_admin #icon-themes {
 	background: url( '../images/screen-icon.png' ) no-repeat;	
@@ -180,7 +194,7 @@ Admin styles
 	min-width:30%;
 	width:30%;
 	float:left;
-	margin-top:87px;
+	margin-top: 100px;
 	border: 1px solid #ddd;  
     border-bottom: 0;  
     background: #fbfbfb;
