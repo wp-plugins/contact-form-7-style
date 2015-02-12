@@ -66,4 +66,18 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * Style filtering by categories for easier use
 * Possibility to save your settings and import / export the generated "custom style"
 * Donate option for support the plugin's continued development and better user support
+
+== Upgrade Notice ==
+= Contact Form 7 Style Version 2.0 =
+* New UI Admin settings options
+* Use custom post type for individual style set up
+* Multiple cf7 forms can have their own style
+* Style can be activated only for certain cf7 forms
+* All google fonts available for use
+* Styling improvement for theme twentyfifteen, twentyfourteen
+* New settings available
+* Possibility to change certain settings for the "custom style" styles
+* Style filtering by categories for easier use
+* Possibility to save your settings and import / export the generated "custom style"
+* Donate option for support the plugin's continued development and better user support
  
