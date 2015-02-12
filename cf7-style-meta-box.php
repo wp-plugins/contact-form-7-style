@@ -562,7 +562,7 @@ class cf7_style_meta_boxes {
 	 */
 	public function render_meta_paypal( $post ) { ?>
             <p>Your donation will motivate us to work more and improve this plugin.</p>
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QP48AKYN67WHA" target="_blank">
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style" target="_blank">
                 <img src="https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg">
             </a>
 	<?php }
