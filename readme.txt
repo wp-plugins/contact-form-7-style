@@ -1,27 +1,27 @@
 === Contact Form 7 Style ===
-Contributors: dorumarginean, ionut.iclanzan, mircear, mlehelsz
-Tags: contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling, hearts, rose, birds
+Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mircear
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QP48AKYN67WHA
+Tags: multiple form styling, contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling, hearts, rose, birds
 Requires at least: 3.0.1
-Tested up to: 3.8.1
+Tested up to: 4.1
 Stable tag: 4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple contact form 7 style addon that has templates that can be customized.
+Simple contact form 7 style addon that has predefined templates or the style can be customized.
 
 == Description ==
 
-This plugin is an addon and requires [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) to be installed on your wordpress blog.
-Supports 4 Valentine's Day templates and 3 Christmas templates for now. These templates can be customized:
-- custom fonts ( google fonts ), 
-- color styling,
-- background-color,
-- border-color,
-- fields, text and background color
-- form styling
-- valentine's day styling
-- christmas styling
-- custom form styling 
+This plugin is an addon for [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) which needs to be installed on your wordpress blog.
+Supports 4 Valentine's Day templates and 3 Christmas templates for now.
+Our addon also suports custom styling, where you can easily change the following styling: <BR>
+- custom fonts ( google fonts ), <BR>
+- color styling, <BR>
+- background-color, <BR>
+- border-color, <BR>
+- fields, text and background color, <BR>
+- form styling, <BR>
+- customized style can be imported / exported <BR>
 
 
 == Installation ==
@@ -34,9 +34,9 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Screenshots ==
 
-1. screenshot-1.jpg
-2. screenshot-2.jpg
-3. screenshot-3.jpg
+1. The Contact Style main settings page.
+2. Predefined Contact Style Template Settings page.
+3. Custom Style Settings page.
 
 == Changelog ==
 
@@ -53,3 +53,17 @@ You will find 'Contact Style' menu in your WordPress admin panel.
  
 = 1.1.1 =
 * Added plugin update notification in plugin template selection panel
+
+= 2.0 =
+* New UI Admin settings options
+* Use custom post type for individual style set up
+* Multiple cf7 forms can have their own style
+* Style can be activated only for certain cf7 forms
+* All google fonts available for use
+* Styling improvement for theme twentyfifteen, twentyfourteen
+* New settings available
+* Possibility to change certain settings for the "custom style" styles
+* Style filtering by categories for easier use
+* Possibility to save your settings and import / export the generated "custom style"
+* Donate option for support the plugin’s continued development and better user support
+ 
