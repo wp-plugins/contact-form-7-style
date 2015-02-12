@@ -65,5 +65,5 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * Possibility to change certain settings for the "custom style" styles
 * Style filtering by categories for easier use
 * Possibility to save your settings and import / export the generated "custom style"
-* Donate option for support the plugin’s continued development and better user support
+* Donate option for support the plugin's continued development and better user support
  
