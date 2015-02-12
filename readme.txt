@@ -1,6 +1,6 @@
 === Contact Form 7 Style ===
 Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mircear
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QP48AKYN67WHA
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style
 Tags: multiple form styling, contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling, hearts, rose, birds
 Requires at least: 3.0.1
 Tested up to: 4.1
