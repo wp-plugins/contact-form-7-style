@@ -40,20 +40,6 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
-= 1.0 =
-* First plugin version.
-
-= 1.0.1 =
-* Fixed x-mas classic display on 2014 wordpress theme.
-
-= 1.1.0 =
-* Added Valentine's Day templates for 2014.
-* Fixed Xmas Red header and footer position
-* Added Custom Style submenu for styling the templates
- 
-= 1.1.1 =
-* Added plugin update notification in plugin template selection panel
-
 = 2.0 =
 * New UI Admin settings options
 * Use custom post type for individual style set up
@@ -66,6 +52,20 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * Style filtering by categories for easier use
 * Possibility to save your settings and import / export the generated "custom style"
 * Donate option for support the plugin's continued development and better user support
+
+= 1.1.1 =
+* Added plugin update notification in plugin template selection panel
+
+= 1.1.0 =
+* Added Valentine's Day templates for 2014.
+* Fixed Xmas Red header and footer position
+* Added Custom Style submenu for styling the templates
+
+= 1.0.1 =
+* Fixed x-mas classic display on 2014 wordpress theme.
+
+= 1.0 =
+* First plugin version.
 
 == Upgrade Notice ==
 = Contact Form 7 Style Version 2.0 =
