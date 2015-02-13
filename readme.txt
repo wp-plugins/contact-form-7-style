@@ -40,6 +40,10 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
+= 2.1 =
+* New feature - Google fonts preview when edit the style
+* New feature - List all styles thumbnail preview for predefined templates
+
 = 2.0.1 =
 * Admin panel minor adjustments
 

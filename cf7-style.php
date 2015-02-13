@@ -3,7 +3,7 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Contact form 7 Style 
-Version: 2.0.1
+Version: 2.1
 Author: REEA
 Author URI: http://www.reea.net/
 License: GPL2
@@ -298,7 +298,7 @@ function cf7style_load_elements(){
 		'show_in_menu'        	=> true,
 		'show_in_nav_menus'   	=> true,
 		'show_in_admin_bar'   	=> false,
-		'menu_icon'				=> "dashicons-twitter",
+		'menu_icon'		=> "dashicons-twitter",
 		'menu_position'       	=> 28.555555,
 		'can_export'          	=> true,
 		'has_archive'         	=> false,
@@ -370,9 +370,27 @@ function cf7style_load_elements(){
 add_action( 'admin_init', 'cf7_style_admin_scripts' );
 add_action( 'init', 'cf7style_load_elements' );
 add_action( 'restrict_manage_posts', 'cf7_style_add_taxonomy_filters' );
-add_action(  'publish_cf7_style',  'cf7_style_set_style_category_on_publish', 10, 2 );
+add_action( 'publish_cf7_style',  'cf7_style_set_style_category_on_publish', 10, 2 );
 add_filter( 'wpcf7_form_class_attr', 'cf7_style_add_class' );
-
+add_filter('manage_cf7_style_posts_columns', 'cf7_style_event_table_head');
+add_action( 'manage_cf7_style_posts_custom_column', 'cf7_style_event_table_content', 10, 2 );
+function cf7_style_event_table_head( $defaults ) {
+    $new = array();
+    foreach( $defaults as $key=>$value) {
+        if( $key=='title') {  // when we find the date column
+          	$new['preview-style']  = 'Preview Style';
+        }    
+        $new[$key]=$value;
+    }  
+    return $new;
+}
+function cf7_style_event_table_content( $column_name, $post_id ) {
+	//    cf7_style_image_preview
+	if ( $column_name == 'preview-style' ) {
+		$img_src = get_post_meta( $post_id, 'cf7_style_image_preview', true );
+		echo "<a href='".admin_url() ."post.php?post=".$post_id."&action=edit"."'><span class='thumb-preview'><img src='" . plugins_url() ."/"."contact-form-7-style". ( empty( $img_src ) ? "/images/default_form.jpg" : $img_src ) . "' alt='".get_the_title( $post_id )."' title='".get_the_title( $post_id )."'/><div class='previewed-img'><img src='" . plugins_url() ."/"."contact-form-7-style". ( empty( $img_src ) ? "/images/default_form.jpg" : $img_src ) . "' alt='".get_the_title( $post_id )."' title='Edit ".get_the_title( $post_id )." Style'/></div></span></a>"	;
+	}
+}
  
 /**
  * Reset the cf7_style_cookie option

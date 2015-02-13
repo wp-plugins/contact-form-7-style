@@ -418,7 +418,7 @@ class cf7_style_meta_boxes {
 						<td>
 							<input type="checkbox" id="<?php echo cf7_style_the_slug(); ?>" name="<?php echo cf7_style_the_slug(); ?>" value="<?php echo get_the_ID(); ?>" <?php if ( $currentpostid == $cf7stylehas ) { echo 'checked'; } ?>  /> 
 							<?php  if ( $currentpostid != $cf7stylehas && !empty( $cf7stylehas ) ) {
-								echo '<p class="description">' . __('Notice: This form allready has a selected style. Checking this one will overwrite the ') . '<a href="' . get_admin_url() . '/post.php?post_type=cf7_style&post=' . $cf7stylehas . '&action=edit">' . __('other one.') . '</a></p>'; 
+								echo '<p class="description">' . __('Notice: This form allready has a selected style. Checking this one will overwrite the ') . '<a href="' . get_admin_url() . 'post.php?post_type=cf7_style&post=' . $cf7stylehas . '&action=edit">' . __('other one.') . '</a></p>'; 
 							} ?>
 						</td>
 					</tr>
@@ -457,7 +457,7 @@ class cf7_style_meta_boxes {
 	public function render_meta_box_image( $post ) {
 		$image = get_post_meta( $post->ID, 'cf7_style_image_preview', true );
 		if ( !empty( $image ) ) {
-			echo '<img src="' . plugins_url() . '/contact-form-7-style/' . $image . '" alt="' . $post->title . '" />';
+			echo '<img src="' . plugins_url() . '/contact-form-7-style' . $image . '" alt="' . $post->title . '" />';
 		} else {
 			//here will be the placeholder in case the image is not available
 			$image = 'default_form.jpg';
@@ -501,11 +501,17 @@ class cf7_style_meta_boxes {
             $cf7_style_font = get_post_meta( $post->ID, 'cf7_style_font', true );
             $selected = '';
             echo '<select name="cf7_style_font_selector">';
-            echo '<option>None</option>';
+            echo '<option value="none">None</option>';
             foreach ($font_obj->items as $font) {
                  echo '<option value="' . $font->family . '"' . ( $cf7_style_font == $font->family ? 'selected="selected"' : '' ) . '>' . $font->family . '</option>';
             }
-            echo '</select>';
+            echo '</select>'; ?>
+            <div class="cf7-style preview-zone">
+            		<h4>Preview Selected font:</h4>
+            		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus ultrices neque sit amet consequat. Aenean facilisis massa convallis nisl viverra eleifend. Nam fermentum mauris eu eleifend posuere. Duis at pharetra tellus. Suspendisse viverra tempor tellus, non efficitur nibh posuere nec. Sed vitae pellentesque augue, id efficitur enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eros turpis, hendrerit id condimentum vitae, fermentum ut dolor. Cras quis lobortis ante.</p>
+            </div>
+            <div class="clear"></div>
+            <?php
         }
         
         /**
