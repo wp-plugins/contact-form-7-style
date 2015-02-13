@@ -21,6 +21,11 @@
 }
 .post-type-cf7_style .thumb-preview img {
 	width: 100%;
+	border: 1px solid #e1e1e1;
+	padding: 5px;
+}
+.type-cf7_style .taxonomy-style_category {
+	text-transform: capitalize;
 }
 .post-type-cf7_style .previewed-img {
 	opacity: 0;
@@ -39,6 +44,10 @@
 	-ms-transition: all 300ms ease-in-out;
 	-o-transition: all 300ms ease-in-out;
 	transition: all 300ms ease-in-out;
+}
+.post-type-cf7_style .previewed-img img {
+	padding: 0;
+	border: none;
 }
 .post-type-cf7_style select[ name='cf7_style_font_selector' ] {
 	float: left;
