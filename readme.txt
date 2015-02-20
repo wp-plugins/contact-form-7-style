@@ -1,5 +1,5 @@
 === Contact Form 7 Style ===
-Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mircear
+Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mirceaR
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style
 Tags: multiple form styling, contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling, hearts, rose, birds
 Requires at least: 3.0.1
@@ -13,16 +13,17 @@ Simple contact form 7 style addon that has predefined templates or the style can
 == Description ==
 
 This plugin is an addon for [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) which needs to be installed on your wordpress blog.
-Supports 4 Valentine's Day templates and 3 Christmas and 1 Simple Pattern templates for now.
-Our addon also suports custom styling, where you can easily change the following styling: <BR>
-- quick edit, <BR>
-- custom fonts ( google fonts ), <BR>
+Supports custom styling, which can be easily managed via admin dashboard. Also has predefined templates like Simple Pattern, Valentine's Day, Christmas that can be activated on your Contact Form 7.  <BR>
+
+Custom style options: <BR>
 - color styling, <BR>
-- background-color, <BR>
+- custom fonts ( google fonts included ), <BR>
+- form background-color, <BR>
 - border-color, <BR>
-- fields, text and background color, <BR>
-- form styling, <BR>
+- styling for input fields, text, textarea, labels, submit button <BR>
+- form container styling, <BR>
 - customized style can be imported / exported <BR>
+- quick edit, <BR>
 
 
 == Installation ==
@@ -45,8 +46,9 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * Fixed Chrome preview problem
 * Removed unnecessary elements from nav menus
 * Fixed custom style no title problem
-* NEW - Added quick edit
-* NEW - Added new simple pattern style category with Twenty Fifteen Pattern
+* [Fixed](https://wordpress.org/support/topic/custom-style-is-not-working?replies=6) css class generator
+* New feature - Added quick edit
+* New feature - Added new simple pattern style category with Twenty Fifteen Pattern
 
 
 = 2.1.1 =
