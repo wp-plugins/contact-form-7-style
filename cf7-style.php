@@ -3,9 +3,9 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Contact form 7 Style 
-Version: 2.1.1
-Author: REEA
-Author URI: http://www.reea.net/
+Version: 2.2
+Author: mlehelsz, dorumarginean, Johnny, MirceaR
+Author URI: https://contactform7style.wordpress.com/
 License: GPL2
 */
 
@@ -14,6 +14,11 @@ License: GPL2
  */
 function get_predefined_cf7_style_template_data() {
 	return array ( 
+		array (
+			'title'		=> 'Twenty Fifteen Pattern',
+			'category'	=> 'simple pattern style',
+			'image'		=> '/admin/images/cf7_simple_twentyfifteen_pattern.jpg'
+		),
 		array (
 			'title'		=> 'Christmas Classic',
 			'category'	=> 'christmas style',
@@ -80,6 +85,9 @@ function count_element_settings( $elements, $checks ){
 }
 function cf7_style_custom_css_generator(){
 	global $post;
+	if( empty( $post ) ) {
+		return false;
+	}
 	$style 					= "<style class='cf7-style' media='screen' type='text/css'>\n";
 	$cf7s_id 				= get_cf7style_slug_or_id( $post, "yes" );
 	$cf7s_slug 				= get_cf7style_slug_or_id( $post, "no" );
@@ -98,7 +106,8 @@ function cf7_style_custom_css_generator(){
 			$second_part		= ( $setting_key_part[0] != "submit" ) ? $setting_key_part[1] : "";
 			$third_part		= ( !empty( $setting_key_part[2] ) ) ? ( ( $setting_key_part[0] != "submit" ) ? "-" : "" ) . $setting_key_part[2] : "";
 			$fourth_part 		= ( !empty( $setting_key_part[3] ) && $setting_key_part[0] == "submit" ) ? "-" . $setting_key_part[3] : "";
-			$classelem = "cf7-style." . $cf7s_slug;
+
+			$classelem = "cf7-style." . ( ( is_numeric( $cf7s_slug ) ) ? "cf7-style-".$cf7s_slug : $cf7s_slug );
 			switch ( $setting_key_part[ 0 ]) {
 				case 'form':
 					$startelem 	= $temp;
@@ -138,10 +147,11 @@ function cf7_style_custom_css_generator(){
 			$style .= ( $startelem == $allelem || $allelem == 1 ) ? "}\n" : "";
 		}
 	}
-	$style .= '.cf7-style.' . $cf7s_slug . "{\n\t font-family: '" . return_font_name( $post->ID ) . "',sans-serif;\n} ";
-	//$style = $cf7s_custom_settings;
-	$style .= "</style>";
-	echo $style;
+	$font_family = return_font_name( $post->ID );
+	if( ! empty( $font_family ) && "none" !== $font_family ) {
+		$style .= '.cf7-style.' . $cf7s_slug . "{\n\t font-family: '" . $font_family . "',sans-serif;\n} ";
+	}
+	echo $style ."</style>";
 }// end of cf7_style_custom_css_generator
 
 //include_once( 'cf7-style-settings.php' );
@@ -152,7 +162,8 @@ function cf7_style_admin_scripts(){
 }
 function cf7_style_add_class( $class ){
 	global $post;
-	$class .= " cf7-style ".get_cf7style_slug_or_id( $post, "no" );
+	$temp_slug = get_cf7style_slug_or_id( $post, "no" );
+	$class .= " cf7-style ". ( ( is_numeric( $temp_slug ) ) ? "cf7-style-".$temp_slug : $temp_slug );
 	return $class;
 }// end of cf7_style_add_class
 /**
@@ -296,7 +307,7 @@ function cf7style_load_elements(){
 		'public'              		=> true,
 		'show_ui'             	=> true,
 		'show_in_menu'        	=> true,
-		'show_in_nav_menus'   	=> true,
+		'show_in_nav_menus'   	=> false,
 		'show_in_admin_bar'   	=> false,
 		'menu_icon'		=> "dashicons-twitter",
 		'menu_position'       	=> 28.555555,
@@ -332,7 +343,7 @@ function cf7style_load_elements(){
 		'public'                     	=> true,
 		'show_ui'                    	=> false,
 		'show_admin_column' 	=> true,
-		'show_in_nav_menus' 	=> true,
+		'show_in_nav_menus' 	=> false,
 		'show_tagcloud'              => true,
 	);
 	//register tax

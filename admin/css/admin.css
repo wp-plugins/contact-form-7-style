@@ -2,11 +2,15 @@
 .menu-icon-cf7_style .dashicons-twitter {
 	position: relative;
 }
-.post-type-cf7_style .wp-list-table tr {
+.post-type-cf7_style .wp-list-table td {
 	position: relative;
+	overflow: visible;
 }
 .post-type-cf7_style #preview-style {
 	width: 200px;
+}
+#cf7_style_meta_box_image img {
+	max-width: 100%;
 }
 .post-type-cf7_style .preview-style {
 	text-align: center;
@@ -33,7 +37,7 @@
 	position: absolute;
 	z-index: 100;
 	top: -70px;
-	left: 30px;
+	left: 0;
 	width: 202px;
 	height: auto;
 	border: 1px solid #e1e1e1;

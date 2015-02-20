@@ -589,9 +589,10 @@ function enque_selected_font() {
         if ( $cf7s_id ) {
             $fontid = get_post_meta( $cf7s_id, 'cf7_style_font', true );
             $googlefont = preg_replace("/ /","+",$fontid);
-            wp_register_style('googlefont-cf7style', 'http://fonts.googleapis.com/css?family=' . $googlefont . ':100,200,300,400,500,600,700,800,900&subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese', array(), false, 'all');
-            wp_enqueue_style('googlefont-cf7style');
-            
+            if( ! empty( $googlefont ) && "none" !== $googlefont )  {
+		wp_register_style('googlefont-cf7style', 'http://fonts.googleapis.com/css?family=' . $googlefont . ':100,200,300,400,500,600,700,800,900&subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese', array(), false, 'all');
+		wp_enqueue_style('googlefont-cf7style');
+            }
         }
     }
 }
@@ -613,19 +614,123 @@ function return_font_name( $postid ) {
 /*
  * hides change permalink and view buttons on editing screen
  */
+
 add_action('admin_head', 'hide_edit_permalinks_on_style_customizer');
 function hide_edit_permalinks_on_style_customizer() {
     $currentScreen = get_current_screen();
-    if ( $currentScreen->post_type == 'cf7_style' ) { ?>
+    if ( $currentScreen->post_type == 'cf7_style' ) { 
+    ?>
         <style type="text/css">
-        <!--
         #titlediv {
             margin-bottom: 10px;
         }
-        #edit-slug-box, .editinline, .view{
+        #edit-slug-box, .inline-edit-col-left, .inline-edit-col-right, .view{
             display: none;
         }
-        -->
+        .inline-edit-col-left.cf7-quick-edit {
+        	display: block;
+        }
+        .inline-edit-cf7_style {
+        	background: #eaeaea;
+        	padding: 20px 0;
+        } 
         </style>
     <?php }
 }
+
+
+/**
+ * Quick edit
+ */ 
+
+add_action( 'quick_edit_custom_box', 'manage_wp_posts_qe_bulk_quick_edit_custom_box', 10, 2 );
+function manage_wp_posts_qe_bulk_quick_edit_custom_box( $column_name, $post_type ) {
+ 
+	if( $post_type == 'cf7_style' && $column_name == 'preview-style' ) {
+
+		switch ( $post_type ) {
+			case 'cf7_style': ?>
+				<fieldset class="inline-edit-col-left cf7-quick-edit" style="clear:both">
+					<div class="hidden-fields"></div>
+					<h4><?php _e( "Activate this template on the following forms:", "cf7_style" ); ?></h4>
+					<div class="inline-edit-col"> 
+						<span class="data">
+						<?php
+							$args = array( 
+								'post_type'		=> 'wpcf7_contact_form',
+								'post_status'		=> 'publish',
+								'posts_per_page'	=> -1
+							);
+							$forms = new WP_Query( $args );
+
+							if( $forms->have_posts() ) :
+								while( $forms->have_posts() ) : $forms->the_post();
+									$form_title = get_the_title();
+									$id 		= get_the_ID();
+									$form_id    = "form-" . $id;
+									$form_style = get_post_meta( get_the_ID(), 'cf7_style_id', true );
+
+									echo "<p><span class='input-text-wrap'><input type='checkbox' name='form[{$id}]' id='form[{$id}]' data-id='{$id}' data-style='{$form_style}' /><label for='form[{$id}]' style='display:inline'>{$form_title}</label></span></p>";
+									if( ! empty( $form_style ) && $id != $form_style ) {
+										$template  = get_the_title( $form_style );
+										$permalink = admin_url() . "post.php?post={$form_style}&action=edit";
+										echo "<span class='notice'>Notice: This form allready has a selected style. Checking this one will overwrite the <a href='{$permalink}' title='{$template}'>other one</a>.</span>";
+									}
+								endwhile;
+								wp_reset_postdata();
+							endif; ?>
+						</span>
+					</div>
+				</fieldset><?php
+			break;
+		}
+	}
+}
+
+
+/**
+ * Populate Quick Edit fields
+ */
+
+add_action( 'admin_print_scripts-edit.php', 'manage_wp_posts_be_qe_enqueue_admin_scripts' );
+function manage_wp_posts_be_qe_enqueue_admin_scripts() {
+	// if using code as plugin
+	wp_enqueue_script( 'manage-wp-posts-using-bulk-quick-edit', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'admin/js/quick.edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
+}
+
+
+/**
+ * Save quick edit templates
+ */
+
+add_action( 'save_post_cf7_style', 'manage_wp_posts_be_qe_save_post', 10, 2 );
+function manage_wp_posts_be_qe_save_post( $post_id, $post ) {
+	// pointless if $_POST is empty (this happens on bulk edit)
+	if ( empty( $_POST ) )
+		return $post_id;
+		
+	// verify quick edit nonce
+	if ( isset( $_POST[ '_inline_edit' ] ) && ! wp_verify_nonce( $_POST[ '_inline_edit' ], 'inlineeditnonce' ) )
+		return $post_id;
+			
+	// don't save for autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+		return $post_id;
+		
+	// dont save for revisions
+	if ( isset( $post->post_type ) && $post->post_type == 'revision' )
+		return $post_id;
+
+	if( isset( $_POST['form'] ) ) {
+		foreach( $_POST['form'] as $form_id => $value ) {
+			update_post_meta( $form_id, 'cf7_style_id', $post_id );
+		}
+	}
+
+	if( isset( $_POST['remove-form'] ) ) {
+		foreach( $_POST['remove-form'] as $form_id => $value ) {
+			update_post_meta( $form_id, 'cf7_style_id', '' );
+		}				
+	}
+
+} 
