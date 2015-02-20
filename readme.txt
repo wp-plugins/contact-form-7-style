@@ -13,8 +13,9 @@ Simple contact form 7 style addon that has predefined templates or the style can
 == Description ==
 
 This plugin is an addon for [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) which needs to be installed on your wordpress blog.
-Supports 4 Valentine's Day templates and 3 Christmas templates for now.
+Supports 4 Valentine's Day templates and 3 Christmas and 1 Simple Pattern templates for now.
 Our addon also suports custom styling, where you can easily change the following styling: <BR>
+- quick edit, <BR>
 - custom fonts ( google fonts ), <BR>
 - color styling, <BR>
 - background-color, <BR>
