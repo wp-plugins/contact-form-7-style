@@ -23,7 +23,7 @@ Custom style options: <BR>
 - styling for input fields, text, textarea, labels, submit button <BR>
 - form container styling, <BR>
 - customized style can be imported / exported <BR>
-- quick edit, <BR>
+- quick edit option <BR>
 
 
 == Installation ==
