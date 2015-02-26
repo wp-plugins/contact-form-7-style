@@ -101,22 +101,56 @@ function cf7_style_general_settings_array(){
 			"title"		=> "Ex 1: 25px 50px 75px 100px;  top padding is 25px right padding is 50px bottom padding is 75px left padding is 100px   Ex 2: 25px 50px 75px;  top padding is 25px right and left paddings are 50px bottom padding is 75px   Ex 3: 25px 50px;  top and bottom paddings are 25px right and left paddings are 50px   Ex 4: 25px;  all four paddings are 25px  "
 		),array(
 			"type" 		=> "text",
-			"label" 		=> "Input margin",
+			"label" 	=> "Input margin",
 			"description" 	=> "hover here for example",
 			"title"		=> "Ex 1: 25px 50px 75px 100px;  top margin is 25px right margin is 50px bottom margin is 75px left margin is 100px   Ex 2: 25px 50px 75px;  top margin is 25px right and left margin are 50px bottom margin is 75px   Ex 3: 25px 50px;  top and bottom margin are 25px right and left margin are 50px   Ex 4: 25px;  all four margin are 25px"
 		),array(
+			"type" 		=> "color-selector",
+			"label" 	=> "Textarea background color",
+			"description" 	=> "Textarea background color"
+		),array(
 			"type" 		=> "number",
-			"label" 		=> "Textarea height",
+			"label" 	=> "Textarea height",
 			"description" 	=> "Textarea height in pixels"
 		),array(
+			"type" 		=> "number",
+			"label" 	=> "Textarea width",
+			"description" 	=> "Textarea width in pixels"
+		),array(
+			"type" 		=> "number",
+			"label" 	=> "Textarea border-size",
+			"description" 	=> "Textarea border width pixels"
+		),array(
+			"type" 		=> "color-selector",
+			"label" 	=> "Textarea border color",
+			"description" 	=> "Textarea border color"
+		),array(
 			"type" 		=> "selectbox",
-			"label" 		=> "Label font style",
-			"value" 		=> array( "normal", "italic", "oblique" ),
+			"label" 	=> "Textarea border style",
+                        "value" 	=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ),
+			"description" 	=> "Textarea border style"
+		),array(
+			"type" 		=> "number",
+			"label" 	=> "Textarea border radius",
+			"description" 	=> "Textarea border radius"
+		),array(
+			"type" 		=> "number",
+			"label" 	=> "Textarea font-size",
+			"description" 	=> "Textarea font size"
+		),array(
+			"type" 		=> "selectbox",
+			"label" 	=> "Textarea font-style",
+                        "value" 	=> array( "normal", "bold", "bolder", "lighter", "initial", "inherit" ),
+			"description" 	=> "Textarea font style"
+		),array(
+			"type" 		=> "selectbox",
+			"label" 	=> "Label font style",
+			"value" 	=> array( "normal", "italic", "oblique" ),
 			"description" 	=> "Choose from the following font styles"	
 		),array(
 			"type" 		=> "selectbox",
-			"label" 		=> "Label font weight",
-			"value" 		=> array( "normal", "bold", "bolder", "lighter", "initial", "inherit" ), // ???
+			"label" 	=> "Label font weight",
+			"value" 	=> array( "normal", "bold", "bolder", "lighter", "initial", "inherit" ),
 			"description" 	=> "Choose from the following label font weights"	
 		),array(
 			"type" 		=> "number",
@@ -129,7 +163,7 @@ function cf7_style_general_settings_array(){
 		)/*,array(
 			"type" 		=> "selectbox",
 			"label" 		=> "Label Fonts",
-			"value" 		=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ), // ???
+			"value" 		=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ),
 			"description" 	=> "Choose from the following Google fonts"	
 		)*/
 	),
@@ -204,7 +238,9 @@ function cf7_style_render_settings( $type, $label, $options, $value, $descriptio
 			</table>
 		</label>
 	</div><!-- /.element -->
+        
 	<?php
+        
 }
 /**
  * Calls the class the meta box. Used for selecting forms for each style.
@@ -283,7 +319,9 @@ class cf7_style_meta_boxes {
 				<h3><?php  echo __( str_replace( "_", " ", $key ).' for this custom style.', "cf7style_text_domain" ); ?></h3>
 				<?php
 				foreach( $settings as $setting ){
-					$current_val = ( !empty( $setting_array ) ) ? $setting_array[ strtolower( str_replace( " ", "-", $setting["label"] ) ) ] : "";
+                                        //this will be improved with:  if ( isset( $setting_array[$setting["label"]] ) ) {  - for later reference !!!
+                                        $current_val = ( !empty( $setting_array ) ) ? $setting_array[ strtolower( str_replace( " ", "-", $setting["label"] ) ) ] : "";
+                                        
 					$current_option = ( $setting["type"] == "selectbox" ) ? $setting["value"] : "";
 					$current_title = ( isset( $setting["title"] ) ) ? $setting["title"] : "";
 					cf7_style_render_settings( $setting["type"], $setting["label"], $current_option, $current_val, $setting["description"], $current_title );

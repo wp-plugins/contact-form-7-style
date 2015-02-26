@@ -42,11 +42,16 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
+= 2.2.1 =
+* [Fixed](https://wordpress.org/support/topic/field-style-issue) textarea field style issue
+* New feature - textarea field additional options
+
+
 = 2.2 =
 * Fixed Chrome preview problem
 * Removed unnecessary elements from nav menus
 * Fixed custom style no title problem
-* [Fixed](https://wordpress.org/support/topic/custom-style-is-not-working?replies=6) css class generator
+* [Fixed](https://wordpress.org/support/topic/custom-style-is-not-working) css class generator
 * New feature - Added quick edit
 * New feature - Added new simple pattern style category with Twenty Fifteen Pattern
 
@@ -89,9 +94,6 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2 =
-* Fixed Chrome preview problem
-* Removed unnecessary elements from nav menus
-* Fixed custom style no title problem
-* NEW - Added quick edit
-* NEW - Added new simple pattern style category with Twenty Fifteen Pattern
+= Contact Form 7 Style Version 2.2.1 =
+* [Fixed](https://wordpress.org/support/topic/field-style-issue) textarea field style issue
+* New feature - textarea field additional options

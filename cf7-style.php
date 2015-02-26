@@ -3,9 +3,9 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Contact form 7 Style 
-Version: 2.2
-Author: mlehelsz, dorumarginean, Johnny, MirceaR
-Author URI: https://contactform7style.wordpress.com/
+Version: 2.2.1
+Author: Reea
+Author URI: http://www.reea.net/
 License: GPL2
 */
 
@@ -289,8 +289,8 @@ function cf7style_load_elements(){
 			'parent_item_colon'   	=> __( 'Parent Style:', 'cf7_style' ),
 			'all_items'           	=> __( 'All Styles', 'cf7_style' ),
 			'view_item'           	=> __( 'View Style', 'cf7_style' ),
-			'add_new_item'        	=> __( 'Add Custom Style', 'cf7_style' ),
-			'add_new'             	=> __( 'Add Custom Style', 'cf7_style' ),
+			'add_new_item'        	=> __( 'Add New', 'cf7_style' ),
+			'add_new'             	=> __( 'Add New', 'cf7_style' ),
 			'edit_item'           	=> __( 'Edit Style', 'cf7_style' ),
 			'update_item'         	=> __( 'Update Style', 'cf7_style' ),
 			'search_items'        	=> __( 'Search Style', 'cf7_style' ),
