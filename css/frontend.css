@@ -33,7 +33,6 @@
  .cf7-style input[type="password"],
  .cf7-style input[type="search"],
  .cf7-style textarea {
- 	padding: 0;
  	width: 100%;
  }
  .cf7-style input:focus,
@@ -143,6 +142,14 @@
 	border: none;
 
 }
+.valentines-day-roses input[type="text"], 
+.valentines-day-roses input[type="email"], 
+.valentines-day-roses input[type="url"],
+.valentines-day-roses input[type="password"],
+.valentines-day-roses input[type="search"],
+.valentines-day-roses textarea{
+ 	width: 92%;
+ }
 .valentines-day-roses input {
 	padding-bottom: 2px;
 }
@@ -240,6 +247,14 @@
 	border: 2px dashed #000;
 	resize:vertical;
 }
+.valentines-day-birds input[type="text"], 
+.valentines-day-birds input[type="email"], 
+.valentines-day-birds input[type="url"],
+.valentines-day-birds input[type="password"],
+.valentines-day-birds input[type="search"],
+.valentines-day-birds textarea{
+ 	width: 94%;
+ }
 .valentines-day-birds textarea {
 	height: 120px;
 }
@@ -429,7 +444,7 @@
 .christmas-classic .wpcf7-form-control-wrap input, 
 .christmas-classic .wpcf7-form-control-wrap textarea {
 	display: block;
-	width: 100%;
+	width: 93%;
 }
 .christmas-classic form textarea {
 	resize: vertical;
@@ -493,6 +508,14 @@
 	width: 100%;
 	font-size: 16px;	
 }
+.christmas-red input[type="text"], 
+.christmas-red input[type="email"], 
+.christmas-red input[type="url"],
+.christmas-red input[type="password"],
+.christmas-red input[type="search"],
+.christmas-red textarea{
+ 	width: 96%;
+ }
 .christmas-red input:focus,
 .christmas-red textarea:focus {
 	background-color: #fff;
@@ -634,7 +657,7 @@
 .christmas-simple p input[type="email"]:focus, 
 .christmas-simple p input[type="tel"]:focus,
 .christmas-simple p textarea:focus {
-	width: 100%;
+	width: 94%;
 	background: transparent;
 	border: dashed 2px #7d5f48;
 }
@@ -688,7 +711,7 @@
 	color: #555;	
 	border-top: solid 1px #fff;
 	font-size: 14px;
-	padding: 9px 15px;
+	padding: 0px 40px;
 	height: 40px;
 	-webkit-border-radius: 15px 18px 7px 9px;
 	-moz-border-radius: 15px 18px 7px 9px;

@@ -3,15 +3,20 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Contact form 7 Style 
-Version: 2.2.1
+Version: 2.2.2
 Author: Reea
-Author URI: http://www.reea.net/
+Author URI: http://www.reea.net
 License: GPL2
+@Author: mlehelsz, dorumarginean, Johnny, MirceaR
 */
 
 /**
  *	Include the plugin options
  */
+function set_styleversion(){
+	return "2.2.2";
+}
+
 function get_predefined_cf7_style_template_data() {
 	return array ( 
 		array (
@@ -91,16 +96,16 @@ function cf7_style_custom_css_generator(){
 	$style 					= "<style class='cf7-style' media='screen' type='text/css'>\n";
 	$cf7s_id 				= get_cf7style_slug_or_id( $post, "yes" );
 	$cf7s_slug 				= get_cf7style_slug_or_id( $post, "no" );
-	$custom_cat 				= get_the_terms( $cf7s_id, "style_category" );
-	$custom_cat_name 			= ( !empty( $custom_cat ) ) ? $custom_cat[ 0 ]->name : "";
+	$custom_cat 			= get_the_terms( $cf7s_id, "style_category" );
+	$custom_cat_name 		= ( !empty( $custom_cat ) ) ? $custom_cat[ 0 ]->name : "";
 	if (  $custom_cat_name == "custom style" ) {
-		$cf7s_custom_settings 		= unserialize( get_post_meta( $cf7s_id, 'cf7_style_custom_styles', true ) );
+		$cf7s_custom_settings = unserialize( get_post_meta( $cf7s_id, 'cf7_style_custom_styles', true ) );
 		$temp 				= 0; 
 		$temp_1 			= 0;
-		$temp_2                         		= 0; 
+		$temp_2             = 0; 
 		$temp_3 			= 0; 
 		$temp_4 			= 0;
-		$form_set_nr 			= count_element_settings( $cf7s_custom_settings, array( "form", "input", "label", "submit", "textarea" ) );
+		$form_set_nr = count_element_settings( $cf7s_custom_settings, array( "form", "input", "label", "submit", "textarea" ) );
 		foreach( $cf7s_custom_settings as $setting_key => $setting ){
 			$setting_key_part 	= explode( "-", $setting_key );
 			$second_part		= ( $setting_key_part[0] != "submit" ) ? $setting_key_part[1] : "";
@@ -117,12 +122,12 @@ function cf7_style_custom_css_generator(){
 				case 'input':
 					$startelem 	= $temp_1;
 					$allelem 	= $form_set_nr[ 1 ];
-					$classelem 	.= " input";
+					$classelem 	.= " input,\n.".$classelem." textarea,\n.".$classelem." input:focus,\n.".$classelem." textarea:focus";
 					$temp_1++;
 					break;
 				case 'label':
 					$startelem 	= $temp_2;
-					$allelem 	= $form_set_nr[ 2 ];
+					$allelem 	= 	
 					$classelem 	.= " label,\n.".$classelem." > p";
 					$temp_2++;
 					break;
@@ -134,7 +139,7 @@ function cf7_style_custom_css_generator(){
 					break;
 				case 'textarea':
 					$startelem 	= $temp_4;
-					$allelem 	= 1;
+					$allelem 	= $form_set_nr[ 4 ];
 					$classelem 	.= " textarea";
 					$temp_4++;
 					break;
@@ -372,8 +377,8 @@ function cf7style_load_elements(){
 	require_once( 'cf7-style-meta-box.php' );
 	if ( ! is_admin() ) {
 		wp_enqueue_script('jquery');
-		wp_enqueue_style( "cf7-style-frontend-style", plugin_dir_url( __FILE__ ) . "css/frontend.css", false, "1.0", "all");
-		wp_enqueue_script( "cf7-style-frontend-script", plugin_dir_url( __FILE__ ) . "js/frontend.js", false, "1.0");
+		wp_enqueue_style( "cf7-style-frontend-style", plugin_dir_url( __FILE__ ) . "css/frontend.css", false, set_styleversion(), "all");
+		wp_enqueue_script( "cf7-style-frontend-script", plugin_dir_url( __FILE__ ) . "js/frontend.js", false, set_styleversion());
 		add_action('wp_head', 'cf7_style_custom_css_generator');  
 	}
 }

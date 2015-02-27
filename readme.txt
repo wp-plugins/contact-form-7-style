@@ -3,7 +3,7 @@ Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mircear
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style
 Tags: multiple form styling, contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling, hearts, rose, birds
 Requires at least: 3.0.1
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: 4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,19 +42,22 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
-= 2.2.1 =
-* [Fixed](https://wordpress.org/support/topic/field-style-issue) textarea field style issue
-* New feature - textarea field additional options
+= 2.2.2 =
+* Minor JQuery fixes for newer wordpress version
+* Fixed custom style for textarea selector
+* Admin panel minor adjustments
 
+= 2.2.1 =
+* New feature - textarea field additional options
+* [Fixed](https://wordpress.org/support/topic/field-style-issue?replies=6) textarea field style issue
 
 = 2.2 =
 * Fixed Chrome preview problem
 * Removed unnecessary elements from nav menus
 * Fixed custom style no title problem
-* [Fixed](https://wordpress.org/support/topic/custom-style-is-not-working) css class generator
+* [Fixed](https://wordpress.org/support/topic/custom-style-is-not-working?replies=6) css class generator
 * New feature - Added quick edit
 * New feature - Added new simple pattern style category with Twenty Fifteen Pattern
-
 
 = 2.1.1 =
 * Minor JQuery fixes for older wordpress version
@@ -94,6 +97,7 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.1 =
-* [Fixed](https://wordpress.org/support/topic/field-style-issue) textarea field style issue
-* New feature - textarea field additional options
+= Contact Form 7 Style Version 2.2.2 =
+* Minor JQuery fixes for newer wordpress version
+* Fixed custom style for textarea selector
+* Admin panel minor adjustments
