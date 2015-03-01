@@ -42,6 +42,9 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
+= 2.2.3 =
+* [Fixed](https://wordpress.org/support/topic/style-doesnt-apply-to-an-existing-form) simple template style issue
+
 = 2.2.2 =
 * Minor JQuery fixes for newer wordpress version
 * Fixed custom style for textarea selector
@@ -97,7 +100,5 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.2 =
-* Minor JQuery fixes for newer wordpress version
-* Fixed custom style for textarea selector
-* Admin panel minor adjustments
+= Contact Form 7 Style Version 2.2.3 =
+* [Fixed](https://wordpress.org/support/topic/style-doesnt-apply-to-an-existing-form) simple template style issue

@@ -753,10 +753,10 @@
  * 3.1 - Twenty fiffteen like
  * ----------------------------------------------------------------------------- 
  */
- .twenty-fifteen-like {
+ .twenty-fifteen-pattern {
  	padding-top: 1.6842em;
  }
-.twenty-fifteen-like p {
+.twenty-fifteen-pattern p {
 	font-size: 1.6rem;
 	margin-bottom: 1.6842em;
 	color: rgba(51, 51, 51, 0.7);
@@ -767,17 +767,18 @@
 	line-height: 1.5;
 	text-transform: uppercase;
 }
-.twenty-fifteen-like input[type="text"], 
-.twenty-fifteen-like input[type="email"], 
-.twenty-fifteen-like input[type="url"], 
-.twenty-fifteen-like input[type="submit"],
-.twenty-fifteen-like textarea {
+.twenty-fifteen-pattern input[type="text"], 
+.twenty-fifteen-pattern input[type="email"], 
+.twenty-fifteen-pattern input[type="url"], 
+.twenty-fifteen-pattern input[type="submit"],
+.twenty-fifteen-pattern textarea {
 	width: 100%;
 	padding: 0.5278em;
 	line-height: normal;
 	font-size: 1.9rem;
 	border: 1px solid rgba(51, 51, 51, 0.1);
 	color: rgba(51, 51, 51, 0.7);
+	background: transparent;
 	background-color: #f7f7f7;
 	border-radius: 0;
 	margin: 0;
@@ -789,16 +790,16 @@
 	box-sizing: border-box;
 
 }
-.twenty-fifteen-like input:focus,
-.twenty-fifteen-like textarea:focus {
+.twenty-fifteen-pattern input:focus,
+.twenty-fifteen-pattern textarea:focus {
 	border: 1px solid rgba(51, 51, 51, 0.3);
 	color: #333;
 	background-color: #fff;
 }
-.twenty-fifteen-like button, 
-.twenty-fifteen-like input[type="button"],
-.twenty-fifteen-like input[type="reset"],
-.twenty-fifteen-like input[type="submit"] {
+.twenty-fifteen-pattern button, 
+.twenty-fifteen-pattern input[type="button"],
+.twenty-fifteen-pattern input[type="reset"],
+.twenty-fifteen-pattern input[type="submit"] {
 	font-size: 1.6rem;
 	padding: 0.8125em 1.625em;
 	background-color: #333;
@@ -810,10 +811,10 @@
 	text-transform: uppercase;
 	width: 100%;
 }
-.twenty-fifteen-like button:hover, 
-.twenty-fifteen-like input[type="button"]:hover,
-.twenty-fifteen-like input[type="reset"]:hover,
-.twenty-fifteen-like input[type="submit"]:hover {
+.twenty-fifteen-pattern button:hover, 
+.twenty-fifteen-pattern input[type="button"]:hover,
+.twenty-fifteen-pattern input[type="reset"]:hover,
+.twenty-fifteen-pattern input[type="submit"]:hover {
 	background-color: rgba(51, 51, 51, 0.7);
 	outline: 0 none;
 }
