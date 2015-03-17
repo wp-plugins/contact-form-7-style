@@ -8,8 +8,6 @@ Stable tag: 4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Style Contact Form 7 form look and feel. Templating allows easy customization of the display.
-Contact Form templates and custom style design. Requires Contact Form 7 plugin installed.
 Simple style customization and templating for Contact Form 7 forms. Requires Contact Form 7 plugin installed.
 
 == Description ==
