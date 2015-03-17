@@ -314,7 +314,9 @@ class cf7_style_meta_boxes {
 	public function render_meta_box_style_customizer( $post ) {
 		wp_nonce_field( 'cf_7_style_style_customizer_inner_custom_box', 'cf_7_style_customizer_custom_box_nonce' );
 		$setting_array = unserialize( get_post_meta( $post->ID, 'cf7_style_custom_styles', true ));
-		foreach( cf7_style_general_settings_array() as $key=>$settings) { ?>
+		$result_manual = get_post_meta( $post->ID, 'cf7_style_manual_style', true ); ?>
+
+		<?php foreach( cf7_style_general_settings_array() as $key=>$settings) { ?>
 			<div class="general-settings">
 				<h3><?php  echo __( str_replace( "_", " ", $key ).' for this custom style.', "cf7style_text_domain" ); ?></h3>
 				<?php
@@ -328,6 +330,15 @@ class cf7_style_meta_boxes {
 				} ?>
 			</div><!-- /.general-settings -->
 		<?php } ?>
+
+		<div class="general-settings full-width">
+			<h3>Custom frontend CSS</h3>
+			<p>You can easily find CSS elements by using your browser inspector or Firebug, or view a quick guide <a href="http://sixrevisions.com/tools/firebug-guide-web-designers/" target="_blank" title="Firebug guide">here</a>.</p>
+			<label for="manual-style">
+				<textarea name="manual-style" id="manual-style" cols="30" rows="10"><?php echo $result_manual; ?></textarea>
+			</label>
+		</div>
+		
 		<div class="clear"></div>
 		<?php
 	}
@@ -358,10 +369,16 @@ class cf7_style_meta_boxes {
 			}
 				
 		}
+		
 		$posted_data = $_POST['cf7stylecustom'];
+		$posted_manual_style_data 	= sanitize_text_field( $_POST[ 'manual-style' ] );
+
 		if ( is_array( $posted_data ) && isset( $posted_data ) ) {
 			$serialized_result = serialize( $posted_data );
 			update_post_meta( $post_id, 'cf7_style_custom_styles', $serialized_result, "");
+		}
+		if (  isset( $posted_manual_style_data ) ) {
+			update_post_meta( $post_id, 'cf7_style_manual_style', $posted_manual_style_data, "");
 		}
 
 	}

@@ -2,8 +2,8 @@
 /*
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
-Description: Contact form 7 Style 
-Version: 2.2.3
+Description: Simple style customization and templating for Contact Form 7 forms. Requires Contact Form 7 plugin installed.
+Version: 2.2.4
 Author: Reea
 Author URI: http://www.reea.net
 License: GPL2
@@ -14,7 +14,7 @@ License: GPL2
  *	Include the plugin options
  */
 function set_styleversion(){
-	return "2.2.3";
+	return "2.2.4";
 }
 
 function get_predefined_cf7_style_template_data() {
@@ -98,6 +98,7 @@ function cf7_style_custom_css_generator(){
 	$cf7s_slug 				= get_cf7style_slug_or_id( $post, "no" );
 	$custom_cat 			= get_the_terms( $cf7s_id, "style_category" );
 	$custom_cat_name 		= ( !empty( $custom_cat ) ) ? $custom_cat[ 0 ]->name : "";
+	$cf7s_manual_style		= get_post_meta( $cf7s_id, 'cf7_style_manual_style', true );
 	if (  $custom_cat_name == "custom style" ) {
 		$cf7s_custom_settings = unserialize( get_post_meta( $cf7s_id, 'cf7_style_custom_styles', true ) );
 		$temp 				= 0; 
@@ -134,13 +135,13 @@ function cf7_style_custom_css_generator(){
 				case 'submit':
 					$startelem 	= $temp_3;
 					$allelem 	= $form_set_nr[ 3 ];
-					$classelem 	.= " .wpcf7-submit";
+					$classelem 	.= " .wpcf7-submit,\n.".$classelem." .wpcf7-submit:focus";
 					$temp_3++;
 					break;
 				case 'textarea':
 					$startelem 	= $temp_4;
 					$allelem 	= $form_set_nr[ 4 ];
-					$classelem 	.= " textarea";
+					$classelem 	.= " textarea,\n.".$classelem." textarea:focus";
 					$temp_4++;
 					break;
 				default:
@@ -156,12 +157,19 @@ function cf7_style_custom_css_generator(){
 	if( ! empty( $font_family ) && "none" !== $font_family ) {
 		$style .= '.cf7-style.' . $cf7s_slug . "{\n\t font-family: '" . $font_family . "',sans-serif;\n} ";
 	}
+	if( !empty( $cf7s_manual_style ) ){
+		$style.= "\n".$cf7s_manual_style."\n";
+	}
 	echo $style ."</style>";
 }// end of cf7_style_custom_css_generator
 
 //include_once( 'cf7-style-settings.php' );
 function cf7_style_admin_scripts(){
-	wp_enqueue_style( 'wp-color-picker' ); 
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( "cf7_style_codemirror_js", plugin_dir_url( __FILE__ ) . "admin/js/codemirror.js", array( 'jquery' ), false, true );
+	wp_enqueue_style( "cf7-style-codemirror-style", plugin_dir_url( __FILE__ ) . "admin/css/codemirror.css", false, set_styleversion(), "all" );
+	wp_enqueue_script( "cf7-style-codemirror-mode", plugin_dir_url( __FILE__ ) . "admin/js/mode/css/css.js",  array( 'jquery' ), false, true );
+ 
 	wp_enqueue_style( "cf7-style-admin-style", plugin_dir_url( __FILE__ ) . "admin/css/admin.css", false, "1.0", "all");  
 	wp_enqueue_script( "cf7_style_admin_js", plugin_dir_url( __FILE__ ) . "admin/js/admin.js", array( 'wp-color-picker' ), false, true );
 }

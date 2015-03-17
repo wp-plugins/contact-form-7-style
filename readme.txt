@@ -1,29 +1,36 @@
 === Contact Form 7 Style ===
 Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mircear
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style
-Tags: multiple form styling, contact form 7, contact form css, contact form style, contact form styling, addon, customize, templates, xmas, Christmas, contact form 7 styling, valentine's day, custom form styling, hearts, rose, birds
+Tags: contact form 7, contact form 7 style, contact form 7 css, contact form 7 styling, CF7, CF7 style, styling contact form, styling contact form 7, multiple form styling, custom form styling, CF7 addon, customize, templates, valentine's day templates, Christmas templates
 Requires at least: 3.0.1
 Tested up to: 4.1.1
 Stable tag: 4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple contact form 7 style addon that has predefined templates or the style can be customized.
+Style Contact Form 7 form look and feel. Templating allows easy customization of the display.
+Contact Form templates and custom style design. Requires Contact Form 7 plugin installed.
+Simple style customization and templating for Contact Form 7 forms. Requires Contact Form 7 plugin installed.
 
 == Description ==
 
 This plugin is an addon for [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) which needs to be installed on your wordpress blog.
 Supports custom styling, which can be easily managed via admin dashboard. Also has predefined templates like Simple Pattern, Valentine's Day, Christmas that can be activated on your Contact Form 7.  <BR>
 
-Custom style options: <BR>
+> This plugin requires the <a href="http://wordpress.org/extend/plugins/contact-form-7/" rel="nofollow">Contact Form 7 plugin</a><BR>
+
+**Custom style options: <BR>**
 - color styling, <BR>
 - custom fonts ( google fonts included ), <BR>
-- form background-color, <BR>
-- border-color, <BR>
 - styling for input fields, text, textarea, labels, submit button <BR>
+- border-color, <BR>
+- form background-color, <BR>
 - form container styling, <BR>
 - customized style can be imported / exported <BR>
 - quick edit option <BR>
+- support multiple forms with different design <BR>
+
+<strong>Support can be found [here](https://wordpress.org/support/plugin/contact-form-7-style).</strong>
 
 
 == Installation ==
@@ -41,6 +48,10 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 3. Custom Style Settings page.
 
 == Changelog ==
+
+= 2.2.4 =
+* New feature - ability to add your own custom css rules
+* [Fixed](https://wordpress.org/support/topic/textarea-height-and-submit-width) textarea and submit button on focus issue
 
 = 2.2.3 =
 * [Fixed](https://wordpress.org/support/topic/style-doesnt-apply-to-an-existing-form) simple template style issue
@@ -100,5 +111,6 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.3 =
-* [Fixed](https://wordpress.org/support/topic/style-doesnt-apply-to-an-existing-form) simple template style issue
+= Contact Form 7 Style Version 2.2.4 =
+* New feature - ability to add your own custom css rules
+* [Fixed](https://wordpress.org/support/topic/textarea-height-and-submit-width) textarea and submit button on focus issue
