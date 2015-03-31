@@ -3,9 +3,9 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Simple style customization and templating for Contact Form 7 forms. Requires Contact Form 7 plugin installed.
-Version: 2.2.4
+Version: 2.2.5
 Author: Reea
-Author URI: http://www.reea.net
+Author URI: http://www.reea.net?ref="wordpress.org"
 License: GPL2
 @Author: mlehelsz, dorumarginean, Johnny, MirceaR
 */
@@ -14,7 +14,7 @@ License: GPL2
  *	Include the plugin options
  */
 function set_styleversion(){
-	return "2.2.4";
+	return "2.2.5";
 }
 
 function get_predefined_cf7_style_template_data() {
@@ -64,8 +64,46 @@ function get_predefined_cf7_style_template_data() {
 function get_cf7style_slug_or_id( $post, $id ) {
 	$post_content = ( !empty( $post ) ) ? $post->post_content : "";
 	if ( has_shortcode( $post_content, 'contact-form-7' ) ) {
-		preg_match('/\[contact-form-7.*id=.(.*).\]/', $post->post_content, $cf7_id );
-		$cf7_id = explode( '"', $cf7_id[1] );
+		//preg_match('/\[contact-form-7.*id=.(.*).\]/', $post->post_content, $cf7_id );
+            
+                //this is a temporary solution. will be improved. 
+                $pattern =     '/\\['                           
+	                . '(\\[?)'                           
+	                . "(contact-form-7)"                 
+	                . '(?![\\w-])'                       
+	                . '('                                
+	                .     '[^\\]\\/]*'                   
+	                .     '(?:'
+	                .         '\\/(?!\\])'               
+	                .         '[^\\]\\/]*'               
+	                .     ')*?'
+	                . ')'
+	                . '(?:'
+	                .     '(\\/)'                        
+	                .     '\\]'                          
+	                . '|'
+	                .     '\\]'                          
+	                .     '(?:'
+	                .         '('                        
+	                .             '[^\\[]*+'             
+	                .             '(?:'
+	                .                 '\\[(?!\\/\\2\\])' 
+	                .                 '[^\\[]*+'         
+	                .             ')*+'
+	                .         ')'
+	                .         '\\[\\/\\2\\]'             
+	                .     ')?'
+	                . ')'
+	                . '(\\]?)/';                          
+
+                
+                
+                preg_match($pattern, $post->post_content, $cf7_id );
+                
+                
+                preg_match('/\[contact-form-7.*id=.(.*).\]/', $cf7_id[0], $cf7_idnew );
+            
+		$cf7_id = explode( '"', $cf7_idnew[1] );
 		$cf7_style_id 	= get_post_meta( $cf7_id[0], 'cf7_style_id' );
 		if ( isset( $cf7_style_id[0]) ) {
 			$cf7_style_data = get_post( $cf7_style_id[0], ARRAY_A );
@@ -135,7 +173,7 @@ function cf7_style_custom_css_generator(){
 				case 'submit':
 					$startelem 	= $temp_3;
 					$allelem 	= $form_set_nr[ 3 ];
-					$classelem 	.= " .wpcf7-submit,\n.".$classelem." .wpcf7-submit:focus";
+					$classelem 	.= " .wpcf7-submit,\n.".$classelem." .wpcf7-submit:focus,\n.".$classelem." input[type=\"submit\"],\n.".$classelem." input[type=\"submit\"]:hover";
 					$temp_3++;
 					break;
 				case 'textarea':
@@ -424,3 +462,24 @@ function cf7_style_deactivate() {
 	update_option( 'cf7_style_add_categories', 0 );
 }
 register_deactivation_hook( __FILE__, 'cf7_style_deactivate' );
+
+/*
+ * Function created for deactivated Contact Form 7 Designer plugin.
+ * This is because styles of that plugin is in conflict with ours. 
+ * No one should add an id in the html tag.
+ */
+function deactivate_contact_form_7_designer_plugin() {
+    if ( is_plugin_active('contact-form-7-designer/cf7-styles.php') ) {
+        deactivate_plugins('contact-form-7-designer/cf7-styles.php');
+        add_action( 'admin_notices', 'cf7_designer_deactivation_notice' );
+    }
+}
+add_action('admin_init', 'deactivate_contact_form_7_designer_plugin');
+/*
+ * notice for the user
+ */
+function cf7_designer_deactivation_notice() { ?>
+    <div class="error">
+        <p>You cannot activate CF7 Designer while CF7 Style is activated!</p>
+    </div>
+<?php }

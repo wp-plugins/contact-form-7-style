@@ -47,6 +47,12 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
+= 2.2.5 =
+* [Fixed](https://wordpress.org/support/topic/avada-theme-5) Avada Theme Fusion Page Builder incompatibility issue
+* [Fixed](https://wordpress.org/support/topic/good-morning-1) Contact form 7 shortcode detection for Flatco - Multipurpose & Responsive WordPress Theme
+* Improve plugin installer process
+ 
+
 = 2.2.4 =
 * New feature - ability to add your own custom css rules
 * [Fixed](https://wordpress.org/support/topic/textarea-height-and-submit-width) textarea and submit button on focus issue
@@ -109,6 +115,7 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.4 =
-* New feature - ability to add your own custom css rules
-* [Fixed](https://wordpress.org/support/topic/textarea-height-and-submit-width) textarea and submit button on focus issue
+= Contact Form 7 Style Version 2.2.5 =
+* [Fixed](https://wordpress.org/support/topic/avada-theme-5) Avada Theme Fusion Page Builder incompatibility issue
+* [Fixed](https://wordpress.org/support/topic/good-morning-1) Contact form 7 shortcode detection for Flatco - Multipurpose & Responsive WordPress Theme
+* Improve plugin installer process

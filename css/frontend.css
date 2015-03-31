@@ -22,23 +22,23 @@
  * 0.0 - Reset
  * ----------------------------------------------------------------------------- 
  */
-  .cf7-style * {
+.cf7-style * {
   	-moz-box-sizing: initial;
   	-webkit-box-sizing: initial;
   	box-sizing: initial;
   }
- .cf7-style input[type="text"], 
- .cf7-style input[type="email"], 
- .cf7-style input[type="url"],
- .cf7-style input[type="password"],
- .cf7-style input[type="search"],
- .cf7-style textarea {
+.cf7-style input[type="text"], 
+.cf7-style input[type="email"], 
+.cf7-style input[type="url"],
+.cf7-style input[type="password"],
+.cf7-style input[type="search"],
+.cf7-style textarea {
  	width: 100%;
  }
- .cf7-style input:focus,
- .cf7-style textarea:focus,
- .cf7-style input[ type="submit" ]:hover {
- 	background-color: inherit;
+body .cf7-style input:focus,
+body .cf7-style textarea:focus,
+body .cf7-style input[ type="submit" ]:hover {
+ 	background: inherit;
  }
 
 /**
@@ -47,11 +47,11 @@
  * 1.1 - Classic
  * ----------------------------------------------------------------------------- 
  */
-.valentines-day-classic {
+body .valentines-day-classic {
 	background:  url('../images/vday-classic/hearted-bg.png') -45px 0 repeat;
 	position: relative;
 }
-.valentines-day-classic .heart {
+body .valentines-day-classic .heart {
 	position: absolute;
 	right:0;
 	background: url('../images/vday-classic/big-heart.png')  0 0 no-repeat;
@@ -59,12 +59,12 @@
 	height: 135px;
 	top:-90px;
 }
-.valentines-day-classic p {
+body .valentines-day-classic p {
 	margin-bottom: 10px;
 	text-shadow: 1px 1px #FFF;
 }
-.valentines-day-classic input,
-.valentines-day-classic textarea {
+body .valentines-day-classic input,
+body .valentines-day-classic textarea {
 	background: rgba(255,255,255,0.7);
 	border: none;
 	border-left: 1px solid #AAA;
@@ -77,13 +77,13 @@
 	box-shadow: 5px 6px 10px -5px #999999;
 	margin-top: 3px;
 }
-.valentines-day-classic input:focus,
-.valentines-day-classic textarea:focus {
+body .valentines-day-classic input:focus,
+body .valentines-day-classic textarea:focus {
 	background: rgba(255,255,255,0.7);
 	border-left: 1px solid #AAA;
 	border-bottom: 1px solid #AAA;
 }
-.valentines-day-classic .wpcf7-submit {
+body .valentines-day-classic .wpcf7-submit {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
@@ -107,10 +107,10 @@
 	float: right;
 	text-shadow: 1px 1px #555;
 }
-.valentines-day-classic .wpcf7-submit:hover {
+body .valentines-day-classic .wpcf7-submit:hover {
 	background-color: transparent;
 }
-.valentines-day-classic .wpcf7-validation-errors {
+body .valentines-day-classic .wpcf7-validation-errors {
 	border: 1px solid #FF0000;
 	background: rgba(255,255,255,0.7);
 }
@@ -123,7 +123,7 @@
  * 1.2 - Roses
  * ----------------------------------------------------------------------------- 
  */
-.valentines-day-roses {
+body .valentines-day-roses {
 	background: url(../images/vday-rose/rose-bg-50percent.png) 0 0 no-repeat;
 	position: relative;
 	min-height:380px;
@@ -133,48 +133,48 @@
 	-moz-box-sizing: initial;
 	box-sizing: initial;
 }
-.valentines-day-roses {
+body .valentines-day-roses {
 	clear: both;
 }
-.valentines-day-roses input,
-.valentines-day-roses textarea {
+body .valentines-day-roses input,
+body .valentines-day-roses textarea {
 	background: none;
 	border: none;
 
 }
-.valentines-day-roses input[type="text"], 
-.valentines-day-roses input[type="email"], 
-.valentines-day-roses input[type="url"],
-.valentines-day-roses input[type="password"],
-.valentines-day-roses input[type="search"],
-.valentines-day-roses textarea{
+body .valentines-day-roses input[type="text"], 
+body .valentines-day-roses input[type="email"], 
+body .valentines-day-roses input[type="url"],
+body .valentines-day-roses input[type="password"],
+body .valentines-day-roses input[type="search"],
+body .valentines-day-roses textarea{
  	width: 92%;
  }
-.valentines-day-roses input {
+body .valentines-day-roses input {
 	padding-bottom: 2px;
 }
-.valentines-day-roses input,
-.valentines-day-roses input:hover,
-.valentines-day-roses input:focus {
+body .valentines-day-roses input,
+body .valentines-day-roses input:hover,
+body .valentines-day-roses input:focus {
 	border-bottom: 1px solid #490706;
 }
-.valentines-day-roses textarea {
+body .valentines-day-roses textarea {
 	width: 215px;
 	height: 140px;
 	resize: none;
 	padding-top: 0;
 	line-height: 32px;
 }
-.valentines-day-roses p {
+body .valentines-day-roses p {
 	margin-bottom: 10px;
 }
-.valentines-day-roses .letter-box {
+body .valentines-day-roses .letter-box {
 	background:#826e50  url(../images/vday-rose/contact-bg.png) 0 0 no-repeat;
 	width: 285px;
 	margin: 62px 0 0 -50px;
 	padding: 35px 15px 45px;
 }
-.valentines-day-roses .wpcf7-submit {
+body .valentines-day-roses .wpcf7-submit {
 	position: absolute;
 	bottom: 5px;
 	right: 20px;
@@ -183,12 +183,12 @@
 	color: #fff;
 	box-shadow: none;
 }
-.valentines-day-roses input[type="submit"]:hover,
-.valentines-day-roses input[type="submit"]:focus {
+body .valentines-day-roses input[type="submit"]:hover,
+body .valentines-day-roses input[type="submit"]:focus {
 	background: #490706;
 }
-.valentines-day-roses .wpcf7-validation-errors,
-.valentines-day-roses .wpcf7-mail-sent-ok {
+body .valentines-day-roses .wpcf7-validation-errors,
+body .valentines-day-roses .wpcf7-mail-sent-ok {
 	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
 	border: none;
 	left: 115px;
@@ -196,10 +196,10 @@
 	top: 145px;
 	width: 295px;
 }
-.valentines-day-roses .wpcf7-validation-errors {
+body .valentines-day-roses .wpcf7-validation-errors {
 	color: #ff0000;
 }
-.valentines-day-roses .wpcf7-mail-sent-ok {
+body .valentines-day-roses .wpcf7-mail-sent-ok {
 	color: green;
 }
 
@@ -210,64 +210,64 @@
  * 1.3 - Birds
  * ----------------------------------------------------------------------------- 
  */
-.valentines-day-birds {
+body .valentines-day-birds {
 	position: relative;
 	width: 280px;
 	margin: 234px 0 301px 97px;
 }
-.valentines-day-birds-container {
+body .valentines-day-birds-container {
 	background:  url('../images/vday-birds/bg-middle.png') 63px 0 repeat-y;
 	width: 486px;
 	margin: 0 auto;
 }
-.valentines-day-birds .bg-header,
-.valentines-day-birds .bg-bottom {
+body .valentines-day-birds .bg-header,
+body .valentines-day-birds .bg-bottom {
 	width: 486px;
 }
-.valentines-day-birds .bg-header {
+body .valentines-day-birds .bg-header {
 	background:  url('../images/vday-birds/bg-top.png') 25px 0 no-repeat;
 	height: 234px;
 	left: -97px;
 	position: absolute;
 	top: -234px;
 }
-.valentines-day-birds .bg-bottom {
+body .valentines-day-birds .bg-bottom {
 	background:  url('../images/vday-birds/bg-bottom.png') 0 0 no-repeat;
 	bottom: -301px;
 	height: 301px;
 	left: -97px;
 	position: absolute;
 }
-.valentines-day-birds p {
+body .valentines-day-birds p {
 	margin: 0;
 }
-.valentines-day-birds input,
-.valentines-day-birds textarea {
+body .valentines-day-birds input,
+body .valentines-day-birds textarea {
 	background: none;
 	border: 2px dashed #000;
 	resize:vertical;
 }
-.valentines-day-birds input[type="text"], 
-.valentines-day-birds input[type="email"], 
-.valentines-day-birds input[type="url"],
-.valentines-day-birds input[type="password"],
-.valentines-day-birds input[type="search"],
-.valentines-day-birds textarea{
+body .valentines-day-birds input[type="text"], 
+body .valentines-day-birds input[type="email"], 
+body .valentines-day-birds input[type="url"],
+body .valentines-day-birds input[type="password"],
+body .valentines-day-birds input[type="search"],
+body .valentines-day-birds textarea{
  	width: 94%;
  }
-.valentines-day-birds textarea {
+body .valentines-day-birds textarea {
 	height: 120px;
 }
-.valentines-day-birds input:hover,
-.valentines-day-birds textarea:hover,
-.valentines-day-birds input:focus,
-.valentines-day-birds textarea:focus {
+body .valentines-day-birds input:hover,
+body .valentines-day-birds textarea:hover,
+body .valentines-day-birds input:focus,
+body .valentines-day-birds textarea:focus {
 	border: 2px dashed #000;
 }
-.valentines-day-birds input {
+body .valentines-day-birds input {
 	margin-bottom: 5px;
 }
-.valentines-day-birds input[type="submit"] {
+body .valentines-day-birds input[type="submit"] {
 	font-size: 30px;
 	color: #444;
 	text-transform: capitalize;
@@ -277,20 +277,20 @@
 	display: block;
 	margin: 0 auto;
 }
-.valentines-day-birds input[type="submit"]:hover,
-.valentines-day-birds input[type="submit"]:focus {
+body .valentines-day-birds input[type="submit"]:hover,
+body .valentines-day-birds input[type="submit"]:focus {
 	background: none;
 	color: #000;
 }
-.valentines-day-birds div.wpcf7-response-output {
+body .valentines-day-birds div.wpcf7-response-output {
 	width: 265px;
 	margin: 0 0 0 -36px;
 	border: none;
 }
-.valentines-day-birds .wpcf7-validation-errors {
+body .valentines-day-birds .wpcf7-validation-errors {
 	color: #ff0000;
 }
-.valentines-day-birds .wpcf7-mail-sent-ok {
+body .valentines-day-birds .wpcf7-mail-sent-ok {
 	color: green;
 }
 
@@ -302,28 +302,28 @@
  * 1.4 - Blue Birds
  * ----------------------------------------------------------------------------- 
  */ 
-.valentines-day-blue-birds {
+body .valentines-day-blue-birds {
 	position: relative;
 	background: url("../images/vday-blue-birds/pattern.jpg") repeat;
 	color: #100804;
 }
-.valentines-day-blue-birds .header {
+body .valentines-day-blue-birds .header {
     background: url("../images/vday-blue-birds/header.png") no-repeat top center;
     height: 260px;
     width: 100%;
 }
-.valentines-day-blue-birds input, 
-.valentines-day-blue-birds textarea {
+body .valentines-day-blue-birds input, 
+body .valentines-day-blue-birds textarea {
 	width: 290px;
 	display: inline-block;
 	background-color: #dad3c2;
 	border: none;
 }
-.valentines-day-blue-birds input:focus, 
-.valentines-day-blue-birds textarea:focus {
+body .valentines-day-blue-birds input:focus, 
+body .valentines-day-blue-birds textarea:focus {
 	background-color: #dad3c2;
 }
-.valentines-day-blue-birds .wpcf7-submit {
+body .valentines-day-blue-birds .wpcf7-submit {
 	background: url("../images/vday-blue-birds/submit.png") no-repeat top right;
 	height: 50px;
 	line-height: 50px;
@@ -337,26 +337,26 @@
 	color: #100804;
 	box-shadow: none;	
 }
-.valentines-day-blue-birds span.wpcf7-not-valid-tip,	
-.valentines-day-blue-birds .wpcf7-submit:hover {
+body .valentines-day-blue-birds span.wpcf7-not-valid-tip,	
+body .valentines-day-blue-birds .wpcf7-submit:hover {
 	color: #7f2a3a;
 }
  
-.valentines-day-blue-birds textarea {
+body .valentines-day-blue-birds textarea {
 	height: 75px;
 }
-.valentines-day-blue-birds p {
+body .valentines-day-blue-birds p {
 	width: 290px;
 	margin: 7px auto;
 	position: relative;
 }
-.valentines-day-blue-birds .footer {
+body .valentines-day-blue-birds .footer {
     background: url("../images/vday-blue-birds/footer.png") no-repeat bottom center;
     height: 145px;
     width: 100%;
 }
-.valentines-day-blue-birds div.wpcf7-mail-sent-ok,
-.valentines-day-blue-birds div.wpcf7-validation-errors {
+body .valentines-day-blue-birds div.wpcf7-mail-sent-ok,
+body .valentines-day-blue-birds div.wpcf7-validation-errors {
 	border: none;
 	background: rgba( 127, 42, 58, .9 );
 	position: absolute;
@@ -366,7 +366,7 @@
 	padding: 10px 20px;
 	right: 0;
 }
-.valentines-day-blue-birds div.wpcf7-mail-sent-ok {
+body .valentines-day-blue-birds div.wpcf7-mail-sent-ok {
 	background: rgba( 9, 94, 0, .9 );
 }
  
@@ -378,10 +378,10 @@
  * 2.1 - Classic
  * ----------------------------------------------------------------------------- 
  */
-.christmas-classic {
+body .christmas-classic {
 	position: relative;
 }
-.christmas-classic-container {
+body .christmas-classic-container {
     background: url("../images/xmas-classic/bg-repeat.png") repeat-y scroll 1px 1px rgba(0, 0, 0, 0);
     display: block;
     margin: auto;
@@ -389,12 +389,12 @@
     text-align: center;
     width: 403px;
 }
-.christmas-classic .header {
+body .christmas-classic .header {
     background: url("../images/xmas-classic/top_border.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 23px;
     width: 100%;
 }
-.christmas-classic .left {
+body .christmas-classic .left {
     background: url("../images/xmas-classic/left_part_bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     bottom: 0;
     height: 129px;
@@ -402,16 +402,16 @@
     position: absolute;
     width: 99px;
 }
-.christmas-classic p {
+body .christmas-classic p {
     color: #482C09;
     margin-bottom: 20px;
     margin-left: 27px;
     width: 350px;
 }
-.christmas-classic span {
+body .christmas-classic span {
     display: block;
 }
-.christmas-classic .footer {
+body .christmas-classic .footer {
     background: url("../images/xmas-classic/bottombg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     bottom: 0;
     height: 255px;
@@ -420,8 +420,8 @@
     position: absolute;
     bottom: -255px;
 }
-.christmas-classic input, 
-.christmas-classic textarea {
+body .christmas-classic input, 
+body .christmas-classic textarea {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
@@ -431,27 +431,27 @@
 	background-color: #f3eadf;
 	border: 1px dotted #b2a28e;
 }
-.christmas-classic input {
+body .christmas-classic input {
 	height: 28px;
 	padding: 3px 5px;
 	line-height: 28px;
 }
-.christmas-classic input:focus, 
-.christmas-classic textarea:focus {
+body .christmas-classic input:focus, 
+body .christmas-classic textarea:focus {
 	background-color: #f3eadf;
 	border: 1px dotted #b2a28e;
 }
-.christmas-classic .wpcf7-form-control-wrap input, 
-.christmas-classic .wpcf7-form-control-wrap textarea {
+body .christmas-classic .wpcf7-form-control-wrap input, 
+body .christmas-classic .wpcf7-form-control-wrap textarea {
 	display: block;
 	width: 93%;
 }
-.christmas-classic form textarea {
+body .christmas-classic form textarea {
 	resize: vertical;
 	margin-bottom: 10px;
 }
 
-.christmas-classic .wpcf7-submit {
+body .christmas-classic .wpcf7-submit {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 	border: medium none;
 	bottom: -252px;
@@ -471,7 +471,7 @@
  * 2.2 - Red
  * ----------------------------------------------------------------------------- 
  */
-.christmas-red-container {
+body .christmas-red-container {
 	color: #fff;	
 	font-size: 25px;
 	width: 600px;
@@ -479,10 +479,10 @@
 	background: url( ../images/xmas-red/middle.png ) repeat-y top center;
 	position: relative;
 }
-.christmas-red {
+body .christmas-red {
 	margin: 94px 0 125px;
 }
-.christmas-red .header {
+body .christmas-red .header {
 	display: block;
 	background: url( ../images/xmas-red/header.png ) no-repeat 32px top;	
 	width: 600px;
@@ -490,7 +490,7 @@
 	position: absolute;
 	top: -94px;
 }
-.christmas-red .footer {
+body .christmas-red .footer {
 	display: block;
 	background: url( ../images/xmas-red/footer.png ) no-repeat top center;	
 	width: 600px;
@@ -498,33 +498,33 @@
 	bottom: -94px;
 	position: absolute;
 }
-.christmas-red p {
+body .christmas-red p {
 	width: 370px;
 	margin: 0 auto;
 }
-.christmas-red input,
-.christmas-red textarea {
+body .christmas-red input,
+body .christmas-red textarea {
 	color: #222;
 	width: 100%;
 	font-size: 16px;	
 }
-.christmas-red input[type="text"], 
-.christmas-red input[type="email"], 
-.christmas-red input[type="url"],
-.christmas-red input[type="password"],
-.christmas-red input[type="search"],
-.christmas-red textarea{
+body .christmas-red input[type="text"], 
+body .christmas-red input[type="email"], 
+body .christmas-red input[type="url"],
+body .christmas-red input[type="password"],
+body .christmas-red input[type="search"],
+body .christmas-red textarea{
  	width: 96%;
  }
-.christmas-red input:focus,
-.christmas-red textarea:focus {
+body .christmas-red input:focus,
+body .christmas-red textarea:focus {
 	background-color: #fff;
 }
-.christmas-red textarea {
+body .christmas-red textarea {
 	height: 120px;
 	resize: vertical;	
 }
-.christmas-red .wpcf7-submit {
+body .christmas-red .wpcf7-submit {
 	display: block;
 	width: 232px;
 	height: 126px;
@@ -539,10 +539,10 @@
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
-.christmas-red .wpcf7-validation-errors,
-.christmas-red .wpcf7-mail-sent-ok,
-.christmas-classic-validation-errors,
-.christmas-classic-mail-sent-ok{
+body .christmas-red .wpcf7-validation-errors,
+body .christmas-red .wpcf7-mail-sent-ok,
+body .christmas-classic-validation-errors,
+body .christmas-classic-mail-sent-ok{
 	border: none;
 	width: 350px;	
 	font-size: 22px;
@@ -550,12 +550,12 @@
 	margin-left: 25px;
 	padding: 0;
 }
-.christmas-red .wpcf7-mail-sent-ok,
-.christmas-classic-mail-sent-ok {
+body .christmas-red .wpcf7-mail-sent-ok,
+body .christmas-classic-mail-sent-ok {
 	color: #73C94E;	
 }
-.christmas-red span.wpcf7-not-valid-tip,
-.christmas-classic span.wpcf7-not-valid-tip {
+body .christmas-red span.wpcf7-not-valid-tip,
+body .christmas-classic span.wpcf7-not-valid-tip {
 	left: 0;
 	top: 0;	
 	padding: 5px 10px;
@@ -568,21 +568,21 @@
 	   -moz-border-radius: 5px;
 	        border-radius: 5px;
 }
-.christmas-red span.wpcf7-list-item {
+body .christmas-red span.wpcf7-list-item {
 	display: inline-block;	
 	height: 32px;
 }
-.christmas-red .wpcf7-radio .wpcf7-list-item {
+body .christmas-red .wpcf7-radio .wpcf7-list-item {
 	background: url(../images/xmas-red/radio.png) no-repeat 0 6px;
 }
-.christmas-red .wpcf7-radio .wpcf7-list-item.active {
+body .christmas-red .wpcf7-radio .wpcf7-list-item.active {
 	background-position: 0 -27px;
 }
-.christmas-red .wpcf7-radio .wpcf7-list-item-label {
+body .christmas-red .wpcf7-radio .wpcf7-list-item-label {
 	display: inline-block;
 	vertical-align: top;	
 }
-.christmas-red span.wpcf7-list-item input[type="radio"] {
+body .christmas-red span.wpcf7-list-item input[type="radio"] {
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
@@ -612,7 +612,7 @@
 	border:0;*/
 		
 }
-.christmas-red .wpcf7-response-output {
+body .christmas-red .wpcf7-response-output {
 	position: relative;
 	margin: 0 auto;
 }
@@ -625,7 +625,7 @@
  * 2.3 - Simple
  * ----------------------------------------------------------------------------- 
  */
-.christmas-simple {
+body .christmas-simple {
 	width: 410px;
 	padding: 50px 20px 15px 20px;
 	margin-bottom: 20px;
@@ -634,39 +634,39 @@
 	margin: 75px 0 35px;
  
 }
-.christmas-simple-container {
+body .christmas-simple-container {
 	width: 425px;
 	margin: 0 auto;
 	border-left: dashed 2px #542c0e;
 	border-right: dashed 2px #542c0e;
 	background: url(../images/xmas-simple/middle.png) repeat-y center top;
 }
-.christmas-simple p {
+body .christmas-simple p {
 	width: 325px;
 	margin: 15px auto;
 }
-.christmas-simple p input[type="text"], 
-.christmas-simple p input[type="email"], 
-.christmas-simple p input[type="tel"],
-.christmas-simple p textarea,
-.christmas-simple p input[type="text"]:hover, 
-.christmas-simple p input[type="email"]:hover, 
-.christmas-simple p input[type="tel"]:hover,
-.christmas-simple p textarea:hover,
-.christmas-simple p input[type="text"]:focus, 
-.christmas-simple p input[type="email"]:focus, 
-.christmas-simple p input[type="tel"]:focus,
-.christmas-simple p textarea:focus {
+body .christmas-simple p input[type="text"], 
+body .christmas-simple p input[type="email"], 
+body .christmas-simple p input[type="tel"],
+body .christmas-simple p textarea,
+body .christmas-simple p input[type="text"]:hover, 
+body .christmas-simple p input[type="email"]:hover, 
+body .christmas-simple p input[type="tel"]:hover,
+body .christmas-simple p textarea:hover,
+body .christmas-simple p input[type="text"]:focus, 
+body .christmas-simple p input[type="email"]:focus, 
+body .christmas-simple p input[type="tel"]:focus,
+body .christmas-simple p textarea:focus {
 	width: 94%;
 	background: transparent;
 	border: dashed 2px #7d5f48;
 }
-.christmas-simple textarea {
+body .christmas-simple textarea {
 	height: 110px;
 	resize: vertical;
 }
-.christmas-simple .header,
-.christmas-simple .footer {
+body .christmas-simple .header,
+body .christmas-simple .footer {
 	width: 425px;
 	height: 35px;
 	margin: 0 auto;
@@ -676,14 +676,14 @@
 	position: absolute;
 	left: -2px;
 }
-.christmas-simple .header {
+body .christmas-simple .header {
 	background-position: 1px 1px;
 	border-radius: 12px 12px 0 0;
 	left: -2px;
 	top: -35px;
 	width: 421px;
 }
-.christmas-simple .footer {
+body .christmas-simple .footer {
 	background: url( '../images/xmas-simple/footer.png' ) no-repeat center top;
 	border-bottom: 2px dashed #542c0e;
 	border-radius: 0 0 20px 20px;
@@ -692,7 +692,7 @@
 	padding-bottom: 3px;
 	width: 421px;
 }
-.christmas-simple .ribbon {
+body .christmas-simple .ribbon {
 	width: 182px;
 	height: 202px;
 	position: absolute;
@@ -700,13 +700,14 @@
 	right: -118px;
 	top: -85px;
 }
-.christmas-simple div.wpcf7-response-output {
+body .christmas-simple div.wpcf7-response-output {
 	width: 360px;
 	margin: 0 auto;
 	border: none;
 	color: #ee0000;	
 }
-.christmas-simple .wpcf7-submit {
+body .christmas-simple .wpcf7-submit,
+body .christmas-simple input[type="submit"] {
 	background: #e7e3d0;
 	color: #555;	
 	border-top: solid 1px #fff;
@@ -719,7 +720,7 @@
 	-webkit-box-shadow: -3px 3px 9px 1px #999;
 	box-shadow: -3px 3px 9px 1px #999;
 }
-.christmas-simple input[type='submit']:hover {
+body .christmas-simple input[type='submit']:hover {
 	border-top: solid 1px #fff;
 	background: #e7e3d0;
 	color: #000;
@@ -730,7 +731,7 @@
 /**
  *	Fix Error tooltips position
  */
-.christmas-simple span.wpcf7-not-valid-tip {
+body .christmas-simple span.wpcf7-not-valid-tip {
 	top: -4px;
 	left: 2px;
 	height: 30px;
@@ -742,7 +743,7 @@
 	border: none;
 }
 /*Christmas clasic - unique*/
-.christmas-classic .wpcf7-not-valid-tip{
+body .christmas-classic .wpcf7-not-valid-tip{
 	width: 100%;
 	background: transparent;
 }
@@ -753,10 +754,10 @@
  * 3.1 - Twenty fiffteen like
  * ----------------------------------------------------------------------------- 
  */
- .twenty-fifteen-pattern {
+body .twenty-fifteen-pattern {
  	padding-top: 1.6842em;
  }
-.twenty-fifteen-pattern p {
+body .twenty-fifteen-pattern p {
 	font-size: 1.6rem;
 	margin-bottom: 1.6842em;
 	color: rgba(51, 51, 51, 0.7);
@@ -767,11 +768,11 @@
 	line-height: 1.5;
 	text-transform: uppercase;
 }
-.twenty-fifteen-pattern input[type="text"], 
-.twenty-fifteen-pattern input[type="email"], 
-.twenty-fifteen-pattern input[type="url"], 
-.twenty-fifteen-pattern input[type="submit"],
-.twenty-fifteen-pattern textarea {
+body .twenty-fifteen-pattern input[type="text"], 
+body .twenty-fifteen-pattern input[type="email"], 
+body .twenty-fifteen-pattern input[type="url"], 
+body .twenty-fifteen-pattern input[type="submit"],
+body .twenty-fifteen-pattern textarea {
 	width: 100%;
 	padding: 0.5278em;
 	line-height: normal;
@@ -790,16 +791,16 @@
 	box-sizing: border-box;
 
 }
-.twenty-fifteen-pattern input:focus,
-.twenty-fifteen-pattern textarea:focus {
+body .twenty-fifteen-pattern input:focus,
+body .twenty-fifteen-pattern textarea:focus {
 	border: 1px solid rgba(51, 51, 51, 0.3);
 	color: #333;
 	background-color: #fff;
 }
-.twenty-fifteen-pattern button, 
-.twenty-fifteen-pattern input[type="button"],
-.twenty-fifteen-pattern input[type="reset"],
-.twenty-fifteen-pattern input[type="submit"] {
+body .twenty-fifteen-pattern button, 
+body .twenty-fifteen-pattern input[type="button"],
+body .twenty-fifteen-pattern input[type="reset"],
+body .twenty-fifteen-pattern input[type="submit"] {
 	font-size: 1.6rem;
 	padding: 0.8125em 1.625em;
 	background-color: #333;
@@ -811,10 +812,10 @@
 	text-transform: uppercase;
 	width: 100%;
 }
-.twenty-fifteen-pattern button:hover, 
-.twenty-fifteen-pattern input[type="button"]:hover,
-.twenty-fifteen-pattern input[type="reset"]:hover,
-.twenty-fifteen-pattern input[type="submit"]:hover {
+body .twenty-fifteen-pattern button:hover, 
+body .twenty-fifteen-pattern input[type="button"]:hover,
+body .twenty-fifteen-pattern input[type="reset"]:hover,
+body .twenty-fifteen-pattern input[type="submit"]:hover {
 	background-color: rgba(51, 51, 51, 0.7);
 	outline: 0 none;
 }

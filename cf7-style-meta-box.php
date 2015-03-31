@@ -140,7 +140,7 @@ function cf7_style_general_settings_array(){
 		),array(
 			"type" 		=> "selectbox",
 			"label" 	=> "Textarea font-style",
-                        "value" 	=> array( "normal", "bold", "bolder", "lighter", "initial", "inherit" ),
+            "value" 	=> array( "normal", "bold", "bolder", "lighter", "initial", "inherit" ),
 			"description" 	=> "Textarea font style"
 		),array(
 			"type" 		=> "selectbox",
@@ -199,7 +199,7 @@ function cf7_style_general_settings_array(){
 			"description" 	=> "Choose a color for the submit border"
 		),array(
 			"type" 		=> "color-selector",
-			"label" 		=> "Submit button background color",
+			"label" 		=> "Submit button background",
 			"description" 	=> "Choose a color for the submit background"
 		),
 	));
