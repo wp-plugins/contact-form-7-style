@@ -14,7 +14,9 @@ jQuery ( document ).ready( function( $ ) {
 		var editor = CodeMirror.fromTextArea( document.getElementById( "manual-style" ), {
 			lineNumbers: true,
 			theme: "default",
-			mode:  "text/css"
+			mode:  "text/css",
+                        indentUnit: 4,
+                        styleActiveLine: true
 		});
 	}
 	$('.cf7-style-color-field').wpColorPicker();

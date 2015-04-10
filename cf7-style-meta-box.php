@@ -13,13 +13,18 @@ function cf7_style_general_settings_array(){
 			"label" 		=> "Form width",
 			"description" 	=> "Form width in pixels"
 		),array(
+			"type" 		=> "selectbox",
+			"label" 		=> "Form box sizing",
+			"value" 		=> array( "inherit", "initial", "content-box", "border-box" ),
+			"description" 	=> "Form box sizing in pixels"
+		),array(
 			"type" 		=> "number",
 			"label" 		=> "Form border width",
 			"description" 	=> "Form border width in pixels"
 		),array(
 			"type" 		=> "selectbox",
 			"label" 		=> "Form border style",
-			"value" 		=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ), // ???
+			"value" 		=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ),
 			"description" 	=> "Style of the Border of the Form"	
 		),array(
 			"type" 		=> "text",
@@ -39,6 +44,10 @@ function cf7_style_general_settings_array(){
 			"type" 		=> "number",
 			"label" 		=> "Form border radius",
 			"description" 	=> "Choose the form's border radius in pixels"
+		),array(
+			"type" 		=> "number",
+			"label" 		=> "Form line height",
+			"description" 	=> "Choose the form's line height in pixels"
 		)
 	),
 	"inputs_and_labels_settings" => array(
@@ -54,15 +63,14 @@ function cf7_style_general_settings_array(){
 			"type" 		=> "color-selector",
 			"label" 		=> "Input Border Color",
 			"description" 	=> "Choose a color for the input border"
-		)/*,array(
-			"type" 		=> "selectbox",
-			"label" 		=> "Input Fonts",
-			"value" 		=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ), // ???
-			"description" 	=> "Choose from the following Google Fonts"	
-		)*/,array(
+		),array(
 			"type" 		=> "number",
 			"label" 		=> "Input font size",
 			"description" 	=> "Size of the input fonts in pixels"
+		),array(
+			"type" 		=> "number",
+			"label" 		=> "Input line height",
+			"description" 	=> "Size of the input line height in pixels"
 		),array(
 			"type" 		=> "number",
 			"label" 		=> "Input border width",
@@ -91,6 +99,11 @@ function cf7_style_general_settings_array(){
 			"label" 		=> "Input width",
 			"description" 	=> "Input width in pixels"
 		),array(
+			"type" 		=> "selectbox",
+			"label" 		=> "Input box sizing",
+			"value" 		=> array( "inherit", "initial", "content-box", "border-box" ),
+			"description" 	=> "Input box sizing in pixels"
+		),array(
 			"type" 		=> "number",
 			"label" 		=> "Input height",
 			"description" 	=> "Input height in pixels"
@@ -117,6 +130,11 @@ function cf7_style_general_settings_array(){
 			"label" 	=> "Textarea width",
 			"description" 	=> "Textarea width in pixels"
 		),array(
+			"type" 		=> "selectbox",
+			"label" 		=> "Textarea box sizing",
+			"value" 		=> array( "inherit", "initial", "content-box", "border-box" ),
+			"description" 	=> "Textarea box sizing in pixels"
+		),array(
 			"type" 		=> "number",
 			"label" 	=> "Textarea border-size",
 			"description" 	=> "Textarea border width pixels"
@@ -138,6 +156,10 @@ function cf7_style_general_settings_array(){
 			"label" 	=> "Textarea font-size",
 			"description" 	=> "Textarea font size"
 		),array(
+			"type" 		=> "number",
+			"label" 	=> "Textarea line height",
+			"description" 	=> "Textarea line height in pixels"
+		),array(
 			"type" 		=> "selectbox",
 			"label" 	=> "Textarea font-style",
             "value" 	=> array( "normal", "bold", "bolder", "lighter", "initial", "inherit" ),
@@ -157,21 +179,25 @@ function cf7_style_general_settings_array(){
 			"label" 		=> "Label font size",
 			"description" 	=> "Size of the label fonts in pixels"
 		),array(
+			"type" 		=> "number",
+			"label" 		=> "Label line height",
+			"description" 	=> "Size of the label line height in pixels"
+		),array(
 			"type" 		=> "color-selector",
 			"label" 		=> "Label Color",
 			"description" 	=> "Choose the color for the label text"
-		)/*,array(
-			"type" 		=> "selectbox",
-			"label" 		=> "Label Fonts",
-			"value" 		=> array( "none", "solid", "dotted","double", "groove", "ridge", "inset", "outset" ),
-			"description" 	=> "Choose from the following Google fonts"	
-		)*/
+		)
 	),
 	"submit_button_settings" => array(
 		array(
 			"type" 		=> "number",
 			"label" 		=> "Submit button width",
 			"description" 	=> "Submit button width in px"
+		),array(
+			"type" 		=> "selectbox",
+			"label" 		=> "Submit button box sizing",
+			"value" 		=> array( "inherit", "initial", "content-box", "border-box" ),
+			"description" 	=> "Submit button box sizing in pixels"
 		),array(
 			"type" 		=> "number",
 			"label" 		=> "Submit button height",
@@ -183,7 +209,11 @@ function cf7_style_general_settings_array(){
 		),array(
 			"type" 		=> "number",
 			"label" 		=> "Submit button font size",
-			"description" 	=> "Border radius in px"
+			"description" 	=> "Font size in px"
+		),array(
+			"type" 		=> "number",
+			"label" 		=> "Submit button line height",
+			"description" 	=> "Line height in px"
 		),array(
 			"type" 		=> "number",
 			"label" 		=> "Submit button border width",
@@ -197,6 +227,10 @@ function cf7_style_general_settings_array(){
 			"type" 		=> "color-selector",
 			"label" 		=> "Submit button border color",
 			"description" 	=> "Choose a color for the submit border"
+		),array(
+			"type" 		=> "color-selector",
+			"label" 		=> "Submit button color",
+			"description" 	=> "Choose a color for the submit button text"
 		),array(
 			"type" 		=> "color-selector",
 			"label" 		=> "Submit button background",
@@ -332,7 +366,7 @@ class cf7_style_meta_boxes {
 		<?php } ?>
 
 		<div class="general-settings full-width">
-			<h3>Custom frontend CSS</h3>
+			<h3><?php _e( "CSS Editor", "cf7style" ); ?></h3>
 			<p>You can easily find CSS elements by using your browser inspector or Firebug, or view a quick guide <a href="http://sixrevisions.com/tools/firebug-guide-web-designers/" target="_blank" title="Firebug guide">here</a>.</p>
 			<label for="manual-style">
 				<textarea name="manual-style" id="manual-style" cols="30" rows="10"><?php echo $result_manual; ?></textarea>
@@ -371,7 +405,8 @@ class cf7_style_meta_boxes {
 		}
 		
 		$posted_data = $_POST['cf7stylecustom'];
-		$posted_manual_style_data 	= sanitize_text_field( $_POST[ 'manual-style' ] );
+		$posted_manual_style_data 	=  strip_tags($_POST[ 'manual-style' ]);
+                preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $posted_manual_style_data);
 
 		if ( is_array( $posted_data ) && isset( $posted_data ) ) {
 			$serialized_result = serialize( $posted_data );

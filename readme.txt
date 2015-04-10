@@ -47,6 +47,12 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
+= 2.2.6 =
+* Added Avada Theme compatibility
+* Added Bridge - Creative Multi-Purpose WordPress Theme compatibility
+* Added Flatco - Multipurpose & Responsive WordPress Theme compatibility
+* Improve CSS Editor UI
+
 = 2.2.5 =
 * [Fixed](https://wordpress.org/support/topic/avada-theme-5) Avada Theme Fusion Page Builder incompatibility issue
 * [Fixed](https://wordpress.org/support/topic/good-morning-1) Contact form 7 shortcode detection for Flatco - Multipurpose & Responsive WordPress Theme
@@ -115,7 +121,8 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.5 =
-* [Fixed](https://wordpress.org/support/topic/avada-theme-5) Avada Theme Fusion Page Builder incompatibility issue
-* [Fixed](https://wordpress.org/support/topic/good-morning-1) Contact form 7 shortcode detection for Flatco - Multipurpose & Responsive WordPress Theme
-* Improve plugin installer process
+= Contact Form 7 Style Version 2.2.6 =
+* Added Avada Theme compatibility
+* Added Bridge - Creative Multi-Purpose WordPress Theme compatibility
+* Added Flatco - Multipurpose & Responsive WordPress Theme compatibility
+* Improve CSS Editor UI
