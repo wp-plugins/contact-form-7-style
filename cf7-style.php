@@ -3,7 +3,7 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Simple style customization and templating for Contact Form 7 forms. Requires Contact Form 7 plugin installed.
-Version: 2.2.6
+Version: 2.2.7
 Author: Reea
 Author URI: http://www.reea.net?ref="wordpress.org"
 License: GPL2
@@ -14,7 +14,7 @@ License: GPL2
  *	Include the plugin options
  */
 function set_styleversion(){
-	return "2.2.6";
+	return "2.2.7";
 }
 
 function get_predefined_cf7_style_template_data() {
@@ -61,67 +61,92 @@ function get_predefined_cf7_style_template_data() {
 		)
 	);
 }// end of get_predefined_cf7_style_template_data
-function get_cf7style_slug_or_id( $post, $id ) {
-        if ( is_front_page() ) {
-            $frontpageid = get_option('page_on_front');
-            $content_post = get_post($frontpageid);
-            $post_content = $content_post->post_content;
-        } else {
-            $post_content = ( !empty( $post ) ) ? $post->post_content : "";
-        }
-	if ( has_shortcode( $post_content, 'contact-form-7' ) ) {
-            
-		//preg_match('/\[contact-form-7.*id=.(.*).\]/', $post->post_content, $cf7_id );
-            
-                //this is a temporary solution. will be improved. 
-                $pattern =     '/\\['                           
-	                . '(\\[?)'                           
-	                . "(contact-form-7)"                 
-	                . '(?![\\w-])'                       
-	                . '('                                
-	                .     '[^\\]\\/]*'                   
-	                .     '(?:'
-	                .         '\\/(?!\\])'               
-	                .         '[^\\]\\/]*'               
-	                .     ')*?'
-	                . ')'
-	                . '(?:'
-	                .     '(\\/)'                        
-	                .     '\\]'                          
-	                . '|'
-	                .     '\\]'                          
-	                .     '(?:'
-	                .         '('                        
-	                .             '[^\\[]*+'             
-	                .             '(?:'
-	                .                 '\\[(?!\\/\\2\\])' 
-	                .                 '[^\\[]*+'         
-	                .             ')*+'
-	                .         ')'
-	                .         '\\[\\/\\2\\]'             
-	                .     ')?'
-	                . ')'
-	                . '(\\]?)/';                          
 
-                
-                
-                preg_match($pattern, $post_content, $cf7_id );
-                
-                
-                
-                preg_match('/\[contact-form-7.*id=.(.*).\]/', $cf7_id[0], $cf7_idnew );
-                
-		$cf7_id = explode( '"', $cf7_idnew[1] );
-                
-		$cf7_style_id 	= get_post_meta( $cf7_id[0], 'cf7_style_id' );
-		if ( isset( $cf7_style_id[0]) ) {
-			$cf7_style_data = get_post( $cf7_style_id[0], ARRAY_A );
-			return ( $id == "yes" ) ? $cf7_style_id[0] : $cf7_style_data['post_name'];
-		}
-	} else {
-		return false;
+
+/**
+ * Get contact form 7 id
+ * 
+ * Back compat for CF7 3.9 
+ * @see http://contactform7.com/2014/07/02/contact-form-7-39-beta/
+ * 
+ * @param $cf7 Contact Form 7 object
+ * @since 0.1.0
+ */		
+function get_form_id( $cf7 ) {
+	if ( version_compare( WPCF7_VERSION, '3.9-alpha', '>' ) ) {
+	    if (!is_object($cf7)) {
+	        return false;
+	    }
+
+	    return $cf7->id();
 	}
-}// end of get_cf7style_slug_or_id
+}
+
+
+/**
+ * Add cf7skins classes to the CF7 HTML form class
+ * 
+ * Based on selected template & style
+ * eg. class="wpcf7-form cf7t-fieldset cf7s-wild-west"
+ * 
+ * @uses 'wpcf7_form_class_attr' filter in WPCF7_ContactForm->form_html()
+ * @uses wpcf7_get_current_contact_form()
+ * @file wp-content\plugins\contact-form-7\includes\contact-form.php
+ * 
+ * @param $class is the CF7 HTML form class
+ * @since 0.0.1
+ */		
+function form_class_attr( $class, $id ) {
+
+	// Get the current CF7 form ID
+	$cf7 = wpcf7_get_current_contact_form();  // Current contact form 7 object
+	$form_id = get_form_id( $cf7 );
+
+	$template_class = '';
+	$cf7_style_id 	= get_post_meta( $form_id, 'cf7_style_id' );
+	if ( isset( $cf7_style_id[0]) ) {
+		$cf7_style_data = get_post( $cf7_style_id[0], ARRAY_A );
+		$template_class = ( $id == "yes" ) ? $cf7_style_id[0] : $cf7_style_data['post_name'];
+	}	
+
+	
+	// Return the modified class
+	return $template_class;
+}
+
+
+/**
+ * Get active styles
+ */
+
+function active_styles() {
+
+	$args = array( 
+		'post_type'			=> 'wpcf7_contact_form',
+		'post_status'		=> 'publish',
+		'posts_per_page' 	=> -1
+	);
+	$active_styles = array();
+	$forms = new WP_Query( $args );
+
+	if( $forms->have_posts() ) :
+		while( $forms->have_posts() ) : $forms->the_post();
+			$form_title = get_the_title();
+			$id 		= get_the_ID();
+			$style_id = get_post_meta( $id, 'cf7_style_id', true );
+
+			if ( ! empty( $style_id ) || $style_id != 0 ) {
+				$active_styles[] = $style_id;
+			}
+			
+		endwhile;
+		wp_reset_postdata();
+	endif; 
+
+	return $active_styles;
+}
+
+
 function count_element_settings( $elements, $checks ){
 	$inner = 0;
 	$arr = array();
@@ -136,115 +161,154 @@ function count_element_settings( $elements, $checks ){
 	return $arr;
 }
 function cf7_style_custom_css_generator(){
+
 	global $post;
 	if( empty( $post ) ) {
 		return false;
 	}
-	$style 					= "<style class='cf7-style' media='screen' type='text/css'>\n";
-	$cf7s_id 				= get_cf7style_slug_or_id( $post, "yes" );
-	$cf7s_slug 				= get_cf7style_slug_or_id( $post, "no" );
-	$custom_cat 			= get_the_terms( $cf7s_id, "style_category" );
-	$custom_cat_name 		= ( !empty( $custom_cat ) ) ? $custom_cat[ 0 ]->name : "";
-	$cf7s_manual_style		= get_post_meta( $cf7s_id, 'cf7_style_manual_style', true );
-	if (  $custom_cat_name == "custom style" ) {
-		$cf7s_custom_settings = unserialize( get_post_meta( $cf7s_id, 'cf7_style_custom_styles', true ) );
-		$temp       = 0; 
-		$temp_1     = 0;
-		$temp_2     = 0; 
-		$temp_3     = 0; 
-		$temp_4     = 0;
-		
-                $form_set_nr = count_element_settings( $cf7s_custom_settings, array( "form", "input", "label", "submit", "textarea" ) );
-                
-                
-		foreach( $cf7s_custom_settings as $setting_key => $setting ){
-			$setting_key_part 	= explode( "-", $setting_key );
-			$second_part		= ( $setting_key_part[0] != "submit" ) ? $setting_key_part[1] : "";
-			$third_part		= ( !empty( $setting_key_part[2] ) ) ? ( ( $setting_key_part[0] != "submit" ) ? "-" : "" ) . $setting_key_part[2] : "";
-			$fourth_part 		= ( !empty( $setting_key_part[3] ) && $setting_key_part[0] == "submit" ) ? "-" . $setting_key_part[3] : "";
 
-			$classelem = "body .cf7-style." . ( ( is_numeric( $cf7s_slug ) ) ? "cf7-style-".$cf7s_slug : $cf7s_slug );
-			switch ( $setting_key_part[ 0 ]) {
-				case 'form':
-					$startelem 	= $temp;
-					$allelem 	= $form_set_nr[ 0 ];
-					$temp++;
-					break;
-				case 'input':
-					$startelem 	= $temp_1;
-					$allelem 	= $form_set_nr[ 1 ];
-					$classelem 	.= " input,\n".$classelem." textarea,\n".$classelem." input:focus,\n".$classelem." textarea:focus,\n".$classelem." textarea:focus,\n" . $classelem . " input[type=\"submit\"]:hover,\n".$classelem." .wpcf7-submit:not([disabled]),\n".$classelem." .wpcf7-submit:not([disabled]):hover";
-					$temp_1++;
-					break;
-				case 'label':
-					$startelem 	= $temp_2;
-					$allelem 	= $form_set_nr[ 2 ];	
-					$classelem 	.= " label,\n".$classelem." > p";
-					$temp_2++;            
-					break;
-				case 'submit':
-					$startelem 	= $temp_3;
-					$allelem 	= $form_set_nr[ 3 ];
-					$classelem 	.= " .wpcf7-submit,\n".$classelem." .wpcf7-submit:focus,\n".$classelem." input[type=\"submit\"],\n".$classelem." input[type=\"submit\"]:hover,\n".$classelem." .wpcf7-submit:not([disabled]),\n".$classelem." .wpcf7-submit:not([disabled]):hover"; 
-					$temp_3++;
-					break;
-				case 'textarea':
-					$startelem 	= $temp_4;
-					$allelem 	= $form_set_nr[ 4 ];
-					$classelem 	.= " textarea,\n".$classelem." textarea:focus";
-					$temp_4++;
-					break;
-				default:
-					# code...
-					break;
-			}
+	$args = array( 
+		'post_type'			=> 'wpcf7_contact_form',
+		'post_status'		=> 'publish',
+		'posts_per_page' 	=> -1
+	);
+	$style_number = 0;
+	$forms = new WP_Query( $args );
+	$style = '';
+	$active_styles = array();
+	$total_num_posts = $forms->found_posts;
 
+	if( $forms->have_posts() ) :
+		while( $forms->have_posts() ) : $forms->the_post();
+			$form_title = get_the_title();
+			$id 		= get_the_ID();
+			$cf7s_id = get_post_meta( $id, 'cf7_style_id', true );
 
-			$style .= ( $startelem == 0 ) ? $classelem . " {\n" : "";
+			if ( ( ! empty( $cf7s_id ) || $cf7s_id !== 0 ) && ! in_array( $cf7s_id, $active_styles ) ) {
+				if( empty( $active_styles ) ) {
+					$style 				.= "\n<style class='cf7-style' media='screen' type='text/css'>\n";
+				}				
+				array_push( $active_styles, $cf7s_id );
 
-
-                        
-			/*$style .= ( $setting != "" && $setting != "Default" && ( $second_part != 'box' && $third_part != 'box' ) ) ? "\t" . $second_part . $third_part . $fourth_part . ": ". ( ( !is_numeric( $setting ) ) ? $setting : $setting . "px" ) . ";\n" : "";*/
-			
-			if ( $setting != "" && $setting != "Default" && ( $second_part != 'box' && $third_part != 'box'  ) && ( $second_part != 'line' || $third_part != 'line'  ) ) {
-
-				$style .= "\t" . $second_part . $third_part . $fourth_part . ": ";
-
-				if (   !is_numeric( $setting  ) && $setting !== '' ) {
-					$style .= $setting;
-				} else {
-					$style .= $setting . "px"; 
+				$cf7s_slug = sanitize_title( get_the_title( $cf7s_id ) );
+				
+				if( $cf7s_slug == "" ) {
+					$cf7s_slug = "cf7-style-" . $cf7s_id;
 				}
-				$style .= ";\n";
-			} 
-                        
-			if( $second_part == 'line' && $setting == "" ) {
-                                
-				$style .= "\t" . $second_part . $third_part . ": normal;\n"; 
+
+				$custom_cat 			= get_the_terms( $cf7s_id, "style_category" );
+				$custom_cat_name 		= ( !empty( $custom_cat ) ) ? $custom_cat[ 0 ]->name : "";
+				$cf7s_manual_style		= get_post_meta( $cf7s_id, 'cf7_style_manual_style', true );
+				if (  $custom_cat_name == "custom style" ) {
+					$cf7s_custom_settings = unserialize( get_post_meta( $cf7s_id, 'cf7_style_custom_styles', true ) );
+					$temp       = 0; 
+					$temp_1     = 0;
+					$temp_2     = 0; 
+					$temp_3     = 0; 
+					$temp_4     = 0;
+					
+			        $form_set_nr = count_element_settings( $cf7s_custom_settings, array( "form", "input", "label", "submit", "textarea" ) );
+			                    
+					foreach( $cf7s_custom_settings as $setting_key => $setting ) {
+						$setting_key_part 	= explode( "-", $setting_key );
+						$second_part		= ( $setting_key_part[0] != "submit" ) ? $setting_key_part[1] : "";
+						$third_part			= ( !empty( $setting_key_part[2] ) ) ? ( ( $setting_key_part[0] != "submit" ) ? "-" : "" ) . $setting_key_part[2] : "";
+						$fourth_part 		= ( !empty( $setting_key_part[3] ) && $setting_key_part[0] == "submit" ) ? "-" . $setting_key_part[3] : "";
+
+						$classelem = "body .cf7-style." . ( ( is_numeric( $cf7s_slug ) ) ? "cf7-style-".$cf7s_slug : $cf7s_slug );
+						switch ( $setting_key_part[ 0 ]) {
+							case 'form':
+								$startelem 	= $temp;
+								$allelem 	= $form_set_nr[ 0 ];
+								$temp++;
+								break;
+							case 'input':
+								$startelem 	= $temp_1;
+								$allelem 	= $form_set_nr[ 1 ];
+								$classelem 	.= " input,\n".$classelem." textarea,\n".$classelem." input:focus,\n".$classelem." textarea:focus,\n".$classelem." textarea:focus,\n" . $classelem . " input[type=\"submit\"]:hover,\n".$classelem." .wpcf7-submit:not([disabled]),\n".$classelem." .wpcf7-submit:not([disabled]):hover";
+								$temp_1++;
+								break;
+							case 'label':
+								$startelem 	= $temp_2;
+								$allelem 	= $form_set_nr[ 2 ];	
+								$classelem 	.= " label,\n".$classelem." > p";
+								$temp_2++;            
+								break;
+							case 'submit':
+								$startelem 	= $temp_3;
+								$allelem 	= $form_set_nr[ 3 ];
+								$classelem 	.= " .wpcf7-submit,\n".$classelem." .wpcf7-submit:focus,\n".$classelem." input[type=\"submit\"],\n".$classelem." input[type=\"submit\"]:hover,\n".$classelem." .wpcf7-submit:not([disabled]),\n".$classelem." .wpcf7-submit:not([disabled]):hover"; 
+								$temp_3++;
+								break;
+							case 'textarea':
+								$startelem 	= $temp_4;
+								$allelem 	= $form_set_nr[ 4 ];
+								$classelem 	.= " textarea,\n".$classelem." textarea:focus";
+								$temp_4++;
+								break;
+							default:
+								# code...
+								break;
+						}
+
+						$style .= ( $startelem == 0 ) ? $classelem . " {\n" : "";
+       
+						/*$style .= ( $setting != "" && $setting != "Default" && ( $second_part != 'box' && $third_part != 'box' ) ) ? "\t" . $second_part . $third_part . $fourth_part . ": ". ( ( !is_numeric( $setting ) ) ? $setting : $setting . "px" ) . ";\n" : "";*/
+						
+						if ( $setting != "" && $setting != "Default" && ( $second_part != 'box' && $third_part != 'box'  ) && ( $second_part != 'line' || $third_part != 'line'  ) ) {
+
+							$style .= "\t" . $second_part . $third_part . $fourth_part . ": ";
+
+							if (   !is_numeric( $setting  ) && $setting !== '' ) {
+								$style .= $setting;
+							} else {
+								$style .= $setting . "px"; 
+							}
+							$style .= ";\n";
+						} 
+			                        
+						if( $second_part == 'line' && $setting == "" ) {
+			                                
+							$style .= "\t" . $second_part . $third_part . ": normal;\n"; 
+						}
+
+						if ( $third_part == "line" && $setting == "" ) {
+							$style .= "\t" . $third_part . $fourth_part . ": normal;\n"; 
+						}
+
+						if( ( $second_part == 'box' || $third_part == 'box' ) && $setting != "Default" ) {
+							$style .= "\t -moz-" . $second_part . $third_part . ": ". $setting . ";\n";
+							$style .= "\t -webkit-" . $second_part . $third_part . ": ". $setting . ";\n";
+							$style .= "\t" . $second_part . $third_part . ": ". $setting . ";\n"; 
+						}
+
+						$style .= ( $startelem == $allelem || $allelem == 1 ) ? "}\n" : "";
+			                        
+					}
+				}
+				$font_family = return_font_name( $cf7s_id );
+
+				if( ! empty( $font_family ) && "none" !== $font_family ) {
+					$style .= 'body .cf7-style.' . $cf7s_slug . ', body .cf7-style.'  . $cf7s_slug . " input[type='submit'] {\n\t font-family: '" . $font_family . "',sans-serif;\n} ";
+				}
+				if( !empty( $cf7s_manual_style ) ){
+					$style.= "\n".$cf7s_manual_style."\n";
+				}
+
+				$style_number++;
 			}
 
-			if ( $third_part == "line" && $setting == "" ) {
-				$style .= "\t" . $third_part . $fourth_part . ": normal;\n"; 
-			}
 
-			if( ( $second_part == 'box' || $third_part == 'box' ) && $setting != "Default" ) {
-				$style .= "\t -moz-" . $second_part . $third_part . ": ". $setting . ";\n";
-				$style .= "\t -webkit-" . $second_part . $third_part . ": ". $setting . ";\n";
-				$style .= "\t" . $second_part . $third_part . ": ". $setting . ";\n"; 
-			}
+		endwhile;
+		
+		if( ( $style_number !== 0 ) && $style_number == count( $active_styles ) ) {
+			$style .= "\n</style>\n";
+		}		
 
-			$style .= ( $startelem == $allelem || $allelem == 1 ) ? "}\n" : "";
-                        
-		}
-	}
-	$font_family = return_font_name( $post->ID );
-	if( ! empty( $font_family ) && "none" !== $font_family ) {
-		$style .= 'body .cf7-style.' . $cf7s_slug . ', body .cf7-style.'  . $cf7s_slug . " input[type='submit'] {\n\t font-family: '" . $font_family . "',sans-serif;\n} ";
-	}
-	if( !empty( $cf7s_manual_style ) ){
-		$style.= "\n".$cf7s_manual_style."\n";
-	}
-	echo $style ."</style>";
+		echo $style;
+
+		wp_reset_postdata();
+	endif; 				
 
 }// end of cf7_style_custom_css_generator
 
@@ -260,7 +324,7 @@ function cf7_style_admin_scripts(){
 }
 function cf7_style_add_class( $class ){
 	global $post;
-	$temp_slug = get_cf7style_slug_or_id( $post, "no" );
+	$temp_slug = form_class_attr( $post, "no" );
 	$class .= " cf7-style ". ( ( is_numeric( $temp_slug ) ) ? "cf7-style-".$temp_slug : $temp_slug );
 	return $class;
 }// end of cf7_style_add_class

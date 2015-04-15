@@ -653,9 +653,12 @@ class cf7_style_meta_boxes {
 			);
 		}
 	}
-	/*
+
+
+	/**
 	 * renders the image
 	 */
+
 	public function render_meta_paypal( $post ) { ?>
             <p>Your donation will motivate us to work more and improve this plugin.</p>
             <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style" target="_blank">
@@ -675,25 +678,31 @@ function cf7_style_the_slug() {
 function enque_selected_font() {
     if ( is_page() || is_single() || is_home() ) {
         global $post;
-         $cf7s_id = get_cf7style_slug_or_id( $post, "yes" );
-        if ( $cf7s_id ) {
-            $fontid = get_post_meta( $cf7s_id, 'cf7_style_font', true );
-            $googlefont = preg_replace("/ /","+",$fontid);
-            if( ! empty( $googlefont ) && "none" !== $googlefont )  {
-		wp_register_style('googlefont-cf7style', 'http://fonts.googleapis.com/css?family=' . $googlefont . ':100,200,300,400,500,600,700,800,900&subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese', array(), false, 'all');
-		wp_enqueue_style('googlefont-cf7style');
-            }
-        }
+		
+		$active_styles = active_styles();
+
+		foreach( $active_styles as $cf7s_id ) {
+	        if ( $cf7s_id ) {
+	            $fontid 	= get_post_meta( $cf7s_id, 'cf7_style_font', true );
+	            $googlefont = preg_replace( "/ /", "+", $fontid );
+	            
+	            if( ! empty( $googlefont ) && "none" !== $googlefont )  {
+					wp_register_style( 'googlefont-cf7style-' . $cf7s_id, 'http://fonts.googleapis.com/css?family=' . $googlefont . ':100,200,300,400,500,600,700,800,900&subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese', array(), false, 'all' );
+					wp_enqueue_style( 'googlefont-cf7style-' . $cf7s_id );
+	            }
+	        }
+		}
     }
 }
 add_action( 'wp_enqueue_scripts', 'enque_selected_font' );
 
-/*
+
+/**
  * returns the name of the font on the current page/post
  */
-function return_font_name( $postid ) {
-    $getpost = get_post( $postid );
-    $cf7s_id = get_cf7style_slug_or_id( $getpost, "yes" );
+
+function return_font_name( $cf7s_id ) {
+
     if ( $cf7s_id ) {
         $fontname = get_post_meta( $cf7s_id, 'cf7_style_font', true );
         return ( $fontname );
@@ -701,7 +710,8 @@ function return_font_name( $postid ) {
     return false;
 }
 
-/*
+
+/**
  * hides change permalink and view buttons on editing screen
  */
 

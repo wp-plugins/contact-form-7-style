@@ -47,6 +47,11 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 
 == Changelog ==
 
+= 2.2.7 =
+* Improvements for reliability and speed
+* Enhanced plugin stability and fixed bugs
+* Added Bretheon Premium WordPress Theme compatibility
+
 = 2.2.6 =
 * Added Avada Theme compatibility
 * Added Bridge - Creative Multi-Purpose WordPress Theme compatibility
@@ -121,8 +126,7 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.6 =
-* Added Avada Theme compatibility
-* Added Bridge - Creative Multi-Purpose WordPress Theme compatibility
-* Added Flatco - Multipurpose & Responsive WordPress Theme compatibility
-* Improve CSS Editor UI
+= Contact Form 7 Style Version 2.2.7 =
+* Improvements for reliability and speed
+* Added Bretheon Premium WordPress Theme compatibility
+* Enhanced plugin stability and fixed bugs
