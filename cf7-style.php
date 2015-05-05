@@ -3,7 +3,7 @@
 Plugin Name: Contact Form 7 Style
 Plugin URI: http://wordpress.reea.net/contact-form-7-style/
 Description: Simple style customization and templating for Contact Form 7 forms. Requires Contact Form 7 plugin installed.
-Version: 2.2.7
+Version: 2.2.8
 Author: Reea
 Author URI: http://www.reea.net?ref="wordpress.org"
 License: GPL2
@@ -14,7 +14,7 @@ License: GPL2
  *	Include the plugin options
  */
 function set_styleversion(){
-	return "2.2.7";
+	return "2.2.8";
 }
 
 function get_predefined_cf7_style_template_data() {
@@ -104,12 +104,17 @@ function form_class_attr( $class, $id ) {
 
 	$template_class = '';
 	$cf7_style_id 	= get_post_meta( $form_id, 'cf7_style_id' );
-	if ( isset( $cf7_style_id[0]) ) {
-		$cf7_style_data = get_post( $cf7_style_id[0], ARRAY_A );
-		$template_class = ( $id == "yes" ) ? $cf7_style_id[0] : $cf7_style_data['post_name'];
+	if ( isset( $cf7_style_id[0] ) ) {
+		$cf7_style_data = get_post( $cf7_style_id[0], OBJECT );
+		
+		
+		if( has_term( 'custom-style', 'style_category', $cf7_style_data ) ) {
+			$template_class = "cf7-style-" . $cf7_style_id[0];
+		} else {
+			$template_class = $cf7_style_data->post_name;
+		}
 	}	
 
-	
 	// Return the modified class
 	return $template_class;
 }
@@ -187,13 +192,14 @@ function cf7_style_custom_css_generator(){
 			if ( ( ! empty( $cf7s_id ) || $cf7s_id !== 0 ) && ! in_array( $cf7s_id, $active_styles ) ) {
 				if( empty( $active_styles ) ) {
 					$style 				.= "\n<style class='cf7-style' media='screen' type='text/css'>\n";
-				}				
-				array_push( $active_styles, $cf7s_id );
+				}	
 
-				$cf7s_slug = sanitize_title( get_the_title( $cf7s_id ) );
-				
-				if( $cf7s_slug == "" ) {
-					$cf7s_slug = "cf7-style-" . $cf7s_id;
+				array_push( $active_styles, $cf7s_id );
+				$cf7_style_data = get_post( $cf7s_id, OBJECT );	
+				if( has_term( 'custom-style', 'style_category', $cf7_style_data ) ) {
+					$cf7s_slug =  $cf7s_id;
+				} else {
+					$cf7s_slug = sanitize_title( get_the_title( $cf7s_id ) );
 				}
 
 				$custom_cat 			= get_the_terms( $cf7s_id, "style_category" );
@@ -289,6 +295,10 @@ function cf7_style_custom_css_generator(){
 				$font_family = return_font_name( $cf7s_id );
 
 				if( ! empty( $font_family ) && "none" !== $font_family ) {
+					if (is_numeric($cf7s_slug)) {
+						$cf7s_slug = "cf7-style-".$cf7s_slug;
+					}
+					
 					$style .= 'body .cf7-style.' . $cf7s_slug . ', body .cf7-style.'  . $cf7s_slug . " input[type='submit'] {\n\t font-family: '" . $font_family . "',sans-serif;\n} ";
 				}
 				if( !empty( $cf7s_manual_style ) ){
@@ -324,8 +334,7 @@ function cf7_style_admin_scripts(){
 }
 function cf7_style_add_class( $class ){
 	global $post;
-	$temp_slug = form_class_attr( $post, "no" );
-	$class .= " cf7-style ". ( ( is_numeric( $temp_slug ) ) ? "cf7-style-".$temp_slug : $temp_slug );
+	$class.= " cf7-style ".form_class_attr( $post, "no" );
 	return $class;
 }// end of cf7_style_add_class
 /**
@@ -535,6 +544,7 @@ function cf7style_load_elements(){
 	if ( ! is_admin() ) {
 		wp_enqueue_script('jquery');
 		wp_enqueue_style( "cf7-style-frontend-style", plugin_dir_url( __FILE__ ) . "css/frontend.css", false, set_styleversion(), "all");
+		wp_enqueue_style( "cf7-style-frontend-responsive-style", plugin_dir_url( __FILE__ ) . "css/responsive.css", false, set_styleversion(), "all");
 		wp_enqueue_script( "cf7-style-frontend-script", plugin_dir_url( __FILE__ ) . "js/frontend.js", false, set_styleversion());
 		add_action('wp_head', 'cf7_style_custom_css_generator');  
 	}

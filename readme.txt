@@ -3,7 +3,7 @@ Contributors: mlehelsz, dorumarginean, ionut.iclanzan, mircear
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ionut.iclanzan.reea@gmail.com&item_name=Donation+for+Contact+Form+Style
 Tags: contact form 7, contact form 7 style, contact form 7 css, contact form 7 styling, CF7, CF7 style, styling contact form, styling contact form 7, multiple form styling, custom form styling, CF7 addon, customize, templates, valentine's day templates, Christmas templates
 Requires at least: 3.0.1
-Tested up to: 4.1.1
+Tested up to: 4.2.1
 Stable tag: 4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,11 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 3. Custom Style Settings page.
 
 == Changelog ==
+
+= 2.2.8 =
+* Optimize responsive view for predefined templates on mobile devices
+* Added Invitora WordPress Theme compatibility
+* Added support for special characters and fixed bugs
 
 = 2.2.7 =
 * Improvements for reliability and speed
@@ -126,7 +131,7 @@ You will find 'Contact Style' menu in your WordPress admin panel.
 * First plugin version.
 
 == Upgrade Notice ==
-= Contact Form 7 Style Version 2.2.7 =
-* Improvements for reliability and speed
-* Added Bretheon Premium WordPress Theme compatibility
-* Enhanced plugin stability and fixed bugs
+= Contact Form 7 Style Version 2.2.8 =
+* Optimize responsive view for predefined templates on mobile devices
+* Added Invitora WordPress Theme compatibility
+* Added support for special characters and fixed bugs

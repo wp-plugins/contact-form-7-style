@@ -20,17 +20,6 @@
  * 0.0 - Reset
  * ----------------------------------------------------------------------------- 
  */
-/* body .cf7-style *,
-body .cf7-style input.wpcf7-form-control.wpcf7-text,
-body .cf7-style input.wpcf7-form-control.wpcf7-number,
-body .cf7-style input.wpcf7-form-control.wpcf7-date,
-body .cf7-style textarea.wpcf7-form-control.wpcf7-textarea,
-body .cf7-style select.wpcf7-form-control.wpcf7-select,
-body .cf7-style input.wpcf7-form-control.wpcf7-quiz {
-  	-moz-box-sizing: content-box;
-  	-webkit-box-sizing: content-box;
-  	box-sizing: content-box;
-} */
 
 .cf7-style input[type="text"],
 .cf7-style input[type="email"],
@@ -592,7 +581,7 @@ body .wpcf7 form.valentines-day-blue-birds p {
 
 body .valentines-day-blue-birds input.wpcf7-form-control.wpcf7-submit {
     position: absolute;
-    right: 0;
+    right: 40px;
     -webkit-transition: none;
     -moz-transition: none;
     -ms-transition: none;
@@ -634,7 +623,6 @@ body .valentines-day-blue-birds textarea:focus {
 
 body .valentines-day-blue-birds .wpcf7-submit {
     background: url("../images/vday-blue-birds/submit.png") no-repeat top right;
-    height: 50px;
     line-height: 50px;
     font-size: 30px;
     display: inline;
@@ -757,10 +745,6 @@ body .christmas-classic p {
     margin-bottom: 20px;
     margin-left: 27px;
     width: 350px;
-}
-
-body .christmas-classic span {
-    display: block;
 }
 
 body .christmas-classic .footer {
